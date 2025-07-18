@@ -62,7 +62,7 @@ body::before {
 }
 .pantalla-inicial span {
   display: block;
-  animation: typing 3s steps(40, end), cursorBlink 0.5s step-end infinite;
+  animation: typing 3s steps(40, end) forwards, cursorBlink 0.5s step-end infinite;
   overflow: hidden;
   border-right: 4px solid var(--primary-color);
   white-space: nowrap;
@@ -189,7 +189,7 @@ h2.open::after {
   overflow: hidden;
 }
 .proyectos.open, .habilidades.open, .contacto.open, .about-content.open, .education-content.open {
-  max-height: 600px;
+  max-height: 2000px; /* Large enough to fit most content; adjust if needed */
   opacity: 1;
   animation: dropdown 0.5s ease-out;
   transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
@@ -342,6 +342,8 @@ footer:active {
   z-index: 10001;
   text-shadow: var(--text-shadow);
   animation: popupFade 0.3s ease-out forwards;
+  -webkit-overflow-scrolling: touch; /* Improves scrolling feel on iOS */
+  touch-action: manipulation; /* Prevents double-tap zoom on touch */
 }
 .popup.open {
   display: block;
@@ -411,6 +413,9 @@ body.blue-theme {
   --text-shadow: none;
   --scanline-color: rgba(0, 0, 0, 0.05);
 }
+body.popup-open {
+  overflow: hidden;
+}
 @media (max-width: 600px) {
   header, section {
     padding: 1.5rem;
@@ -433,19 +438,123 @@ body.blue-theme {
     padding: 0.3rem 0.6rem;
   }
   .popup {
-    padding: 1.5rem;
-    max-width: 90%;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border: none;
+    border-radius: 0;
+    padding: 2rem 1rem; /* More vertical padding for headers/footers */
+    box-sizing: border-box;
   }
+
+  .popup-overlay {
+    backdrop-filter: blur(5px); /* Reduce blur for performance on low-end devices */
+  }
+
+  /* Adjust popup content for better readability on small screens */
   .popup h3 {
-    font-size: 1.8rem; /* Adjusted for mobile */
+    font-size: 1.6rem;
   }
   .popup p {
-    font-size: 1.2rem; /* Adjusted for mobile */
+    font-size: 1.1rem;
+  }
+  .popup-close {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
   }
   .terminal-prompt, .terminal-input {
     font-size: 1.2rem; /* Adjusted for mobile */
   }
   .terminal-output {
     font-size: 1rem; /* Adjusted for mobile */
+  }
+}
+/* CSS remains the same as before */
+
+/* Audio Player Styles */
+#audio-player {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 280px; /* Max recommended 300px */
+  background: var(--background-overlay); /* Integrates with existing dark overlay */
+  border: 1px solid var(--primary-color); /* Green border */
+  padding: 10px;
+  z-index: 1001; /* Above other elements */
+  font-family: 'VT323', monospace;
+  color: var(--primary-color); /* Green text */
+  box-shadow: 0 0 10px var(--primary-color); /* Subtle glow shadow */
+  border-radius: 5px;
+  animation: flicker 0.1s infinite alternate; /* Matches terminal flicker */
+  text-shadow: var(--text-shadow);
+}
+
+.player-title {
+  font-size: 1.2rem; /* Matches content font size */
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-title.scrolling span {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+#audio-player button {
+  background: var(--highlight-bg);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+#audio-player button:hover {
+  background: var(--highlight-hover);
+  box-shadow: 0 0 10px var(--primary-color);
+  animation: glitchHover 0.3s;
+}
+
+#audio-player button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  #audio-player {
+    width: 90%; /* Full width on mobile */
+    max-width: 300px;
+    right: 5px;
+    top: 5px;
+  }
+
+  .player-title {
+    font-size: 1rem;
+  }
+
+  #audio-player button {
+    font-size: 1rem;
+    padding: 4px 8px;
   }
 }

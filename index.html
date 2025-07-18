@@ -17,9 +17,22 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  
   <div class="pantalla-inicial" id="intro">
     <span data-lang-key="booting">>> BOOTING WOPR...</span>
   </div>
+  <!-- HTML remains the same as before -->
+<div id="audio-player">
+  <div class="player-title">Loading...</div>
+  <button id="play-pause-btn">▶ Play</button>
+  <button id="mute-btn">🔇 Mute</button>
+</div>
+
+<!-- Hidden div for the YouTube iframe (will be invisible) -->
+<div id="yt-player" style="display: none;"></div>
+
+<!-- Include the YouTube Iframe API script (required for JS control) -->
+<script src="https://www.youtube.com/iframe_api"></script>
 
   <div class="popup-overlay" id="popupOverlay" role="presentation"></div>
   <div class="popup" id="popup" role="dialog" aria-labelledby="popupTitle" aria-modal="true">

@@ -390,6 +390,7 @@ function openPopup(id) {
     popupOverlay.classList.add('open');
     popup.focus();
     playClick();
+    document.body.classList.add('popup-open');
   }
 }
 
@@ -400,6 +401,7 @@ function closePopup() {
   popupOverlay.classList.remove('open');
   document.getElementById('terminalInput').focus();
   playClick();
+  document.body.classList.remove('popup-open');
 }
 
 // Sound Handling
@@ -770,4 +772,89 @@ window.addEventListener('DOMContentLoaded', () => {
 
   updateLanguage();
   updateToggles();  // Initial update for toggles
+});
+// JS updates: Start unmuted by default, adjust initial button text
+
+// YouTube Player variables
+let player;
+let isPlaying = false;
+let isMuted = false; // Start unmuted
+
+// Predefined YouTube video URL (replace with your desired link)
+// For production, you could extract from a hidden input: const videoUrl = document.getElementById('hidden-yt-input').value;
+const videoUrl = 'https://www.youtube.com/watch?v=Ld37nwZz1RQ&list=RDLd37nwZz1RQ&start_radio=1'; // Test video (Rick Astley)
+const videoId = videoUrl.split('v=')[1].split('&')[0]; // Extract video ID
+
+// Function to initialize YouTube Player (called by the API script)
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('yt-player', {
+    height: '0', // Hidden
+    width: '0',  // Hidden
+    videoId: videoId,
+    playerVars: {
+      'autoplay': 0, // No initial autoplay
+      'controls': 0, // No controls visible
+      'modestbranding': 1,
+      'rel': 0,
+      'showinfo': 0
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+// When player is ready, get title and set initial state
+function onPlayerReady(event) {
+  // Get video title
+  const title = player.getVideoData().title || 'Unknown';
+  const titleElement = document.querySelector('.player-title');
+  titleElement.textContent = title;
+  
+  // Check if title overflows and apply scrolling if needed
+  setTimeout(() => { // Wait for rendering
+    if (titleElement.scrollWidth > titleElement.clientWidth) {
+      titleElement.innerHTML = `<span>${title}     ${title}</span>`;
+      titleElement.classList.add('scrolling');
+    }
+  }, 0);
+  
+  // No initial mute since play requires user interaction
+  document.getElementById('mute-btn').textContent = '🔇 Mute'; // Shows to mute
+}
+
+// Handle state changes (e.g., for play/pause button updates)
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    isPlaying = true;
+    document.getElementById('play-pause-btn').textContent = '⏸ Pause';
+  } else {
+    isPlaying = false;
+    document.getElementById('play-pause-btn').textContent = '▶ Play';
+  }
+}
+
+// Play/Pause button handler
+document.getElementById('play-pause-btn').addEventListener('click', () => {
+  if (isPlaying) {
+    player.pauseVideo();
+  } else {
+    player.playVideo(); // Autoplays on click
+  }
+  playClick(); // Integrate with existing sound effect if desired
+});
+
+// Mute/Unmute button handler
+document.getElementById('mute-btn').addEventListener('click', () => {
+  if (isMuted) {
+    player.unMute();
+    isMuted = false;
+    document.getElementById('mute-btn').textContent = '🔇 Mute';
+  } else {
+    player.mute();
+    isMuted = true;
+    document.getElementById('mute-btn').textContent = '🔊 Unmute';
+  }
+  playClick(); // Integrate with existing sound effect if desired
 });
