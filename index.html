@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dorjee's cyberpunk-inspired portfolio showcasing development projects, skills, and creative works." />
+  <meta name="keywords" content="portfolio, developer, cyberpunk, programming, web development, Dorjee" />
+  <meta property="og:title" content="Dorjee's Pip-Boy Portfolio" />
+  <meta property="og:description" content="Explore Dorjee's projects, skills, and cyberpunk-inspired creations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dorjee-portfolio.example.com/og-image.jpg" />
+  <meta property="og:site_name" content="Dorjee's Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>PIPBOY PORTFOLIO - DORJEE</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #33ff33;
+      --background-dark: #001100;
+      --background-overlay: rgba(0, 17, 0, 0.2);
+      --highlight-bg: rgba(51, 255, 51, 0.05);
+      --highlight-hover: rgba(51, 255, 51, 0.1);
+      --text-shadow: 0 0 3px var(--primary-color), 0 0 5px var(--primary-color);
+      --scanline-color: rgba(0, 0, 0, 0.05);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: var(--background-dark);
+      color: var(--primary-color);
+      font-family: 'VT323', monospace;
+      overflow-x: hidden;
+      text-shadow: var(--text-shadow);
+      position: relative;
+      padding-bottom: 180px;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        var(--scanline-color),
+        var(--scanline-color) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .pantalla-inicial {
+      width: 100vw;
+      height: 100vh;
+      background: var(--background-dark);
+      color: var(--primary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.2rem;
+      white-space: pre-line;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+      animation: fadeInIntro 1s ease-out;
+    }
+    .pantalla-inicial span {
+      display: block;
+      animation: typing 3s steps(40, end), cursorBlink 0.5s step-end infinite;
+      overflow: hidden;
+      border-right: 4px solid var(--primary-color);
+      white-space: nowrap;
+      width: 0;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes cursorBlink {
+      50% { border-color: transparent; }
+    }
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.92; }
+      100% { opacity: 1; }
+    }
+    @keyframes glitchHover {
+      0% { transform: translate(0); }
+      15% { transform: translate(-3px, 3px); }
+      30% { transform: translate(3px, -3px); }
+      45% { transform: translate(-2px, 2px); }
+      60% { transform: translate(2px, -2px); }
+      75% { transform: translate(-1px, 1px); }
+      100% { transform: translate(0); }
+    }
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      10% { transform: translate(-4px, 3px); }
+      20% { transform: translate(4px, -3px); }
+      30% { transform: translate(-3px, 2px); }
+      40% { transform: translate(3px, -2px); }
+      50% { transform: translate(-2px, 3px); }
+      60% { transform: translate(2px, -3px); }
+      70% { transform: translate(-3px, 1px); }
+      80% { transform: translate(3px, -1px); }
+      90% { transform: translate(-1px, 2px); }
+      100% { transform: translate(0, 0); }
+    }
+    @keyframes fadeInIntro {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glitchTransition {
+      0% { transform: translate(0); opacity: 1; }
+      15% { transform: translate(-6px, 6px); opacity: 0.8; }
+      30% { transform: translate(6px, -6px); opacity: 0.85; }
+      45% { transform: translate(-4px, 4px); opacity: 0.75; }
+      60% { transform: translate(4px, -4px); opacity: 0.85; }
+      75% { transform: translate(-2px, 2px); opacity: 0.9; }
+      100% { transform: translate(0); opacity: 1; }
+    }
+    @keyframes dropdown {
+      0% { max-height: 0; opacity: 0; }
+      100% { max-height: 600px; opacity: 1; }
+    }
+    @keyframes popupFade {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    header, section {
+      padding: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: calc(0.2s * var(--section-index));
+    }
+    header.active, section.active {
+      animation: glitchTransition 0.5s forwards;
+    }
+    header {
+      border-bottom: 2px solid var(--primary-color);
+      text-shadow: var(--text-shadow);
+      background: var(--background-overlay);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+    header.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+    }
+    header p {
+      font-size: 1.6rem;
+    }
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1.2rem;
+      text-shadow: var(--text-shadow);
+      cursor: pointer;
+      background: var(--background-overlay);
+      padding: 0.6rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    h2::after {
+      content: '▶';
+      position: absolute;
+      right: 1rem;
+      transition: transform 0.3s ease;
+    }
+    h2.open::after {
+      transform: rotate(90deg);
+    }
+    .proyectos, .habilidades, .contacto, .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      max-height: auto;
+      opacity: 1;
+      overflow: hidden;
+    }
+    .proyectos.open, .habilidades.open, .contacto.open, .about-content.open {
+      max-height: 600px;
+      opacity: 1;
+      animation: dropdown 0.5s ease-out;
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    }
+    .proyecto, .habilidad, .contacto-item, .about-content p {
+      background: var(--highlight-bg);
+      padding: 1.2rem;
+      border: 1px solid var(--primary-color);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    }
+    .proyecto:hover, .habilidad:hover, .contacto-item:hover, .about-content p:hover {
+      background: var(--highlight-hover);
+      box-shadow: 0 0 10px var(--primary-color);
+      animation: glitchHover 0.3s;
+    }
+    .proyecto:focus, .habilidad:focus, .contacto-item:focus, .about-content p:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+    .contacto-item a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .contacto-item a:hover {
+      text-decoration: underline;
+    }
+    .contact-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-right: 0.6rem;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .contact-icon:hover {
+      animation: glitchHover 0.3s;
+    }
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      border-top: 2px solid var(--primary-color);
+      font-size: 1.1rem;
+      text-shadow: var(--text-shadow);
+      background: var(--background-overlay);
+      transition: box-shadow 0.2s ease;
+    }
+    footer:hover {
+      box-shadow: 0 0 10px var(--primary-color);
+      animation: glitchHover 0.3s;
+    }
+    footer:active {
+      animation: shake 0.5s;
+    }
+    .terminal {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--background-dark);
+      border-top: 2px solid var(--primary-color);
+      padding: 0.6rem;
+      z-index: 9997;
+      display: none;
+      animation: flicker 0.1s infinite alternate;
+    }
+    .terminal-input-container {
+      display: flex;
+      align-items: center;
+    }
+    .terminal-prompt {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      text-shadow: var(--text-shadow);
+      margin-right: 0.6rem;
+    }
+    .terminal-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--primary-color);
+      font-family: 'VT323', monospace;
+      font-size: 1.3rem;
+      text-shadow: var(--text-shadow);
+      outline: none;
+      padding: 0.6rem;
+    }
+    .terminal-output {
+      max-height: 120px;
+      overflow-y: auto;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      padding: 0.6rem;
+    }
+    .suggestion {
+      cursor: pointer;
+      padding: 0.3rem;
+      background: var(--highlight-bg);
+      transition: background 0.2s ease;
+    }
+    .suggestion:hover, .suggestion.selected {
+      background: var(--highlight-hover);
+    }
+    .sound-toggle, .lang-toggle, .theme-toggle, .resume-button {
+      position: fixed;
+      bottom: 0.6rem;
+      background: var(--highlight-bg);
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .sound-toggle {
+      right: 0.6rem;
+    }
+    .lang-toggle {
+      right: 5.6rem;
+    }
+    .theme-toggle {
+      right: 10.6rem;
+    }
+    .resume-button {
+      right: 15.6rem;
+    }
+    .sound-toggle:hover, .lang-toggle:hover, .theme-toggle:hover, .resume-button:hover {
+      background: var(--highlight-hover);
+      box-shadow: 0 0 10px var(--primary-color);
+      animation: glitchHover 0.3s;
+    }
+    .sound-toggle:focus, .lang-toggle:focus, .theme-toggle:focus, .resume-button:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: var(--background-overlay);
+      border: 2px solid var(--primary-color);
+      padding: 2.5rem;
+      max-width: 450px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      z-index: 10001;
+      text-shadow: var(--text-shadow);
+      animation: popupFade 0.3s ease-out forwards;
+    }
+    .popup.open {
+      display: block;
+    }
+    .popup h3 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    .popup p {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .popup a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: text-decoration 0.2s ease;
+    }
+    .popup a:hover {
+      text-decoration: underline;
+    }
+    .popup-close {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      background: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .popup-close:hover {
+      background: var(--highlight-hover);
+      animation: glitchHover 0.3s;
+    }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      backdrop-filter: blur(10px);
+    }
+    .popup-overlay.open {
+      display: block;
+    }
+    body.amber-theme {
+      --primary-color: #ffbb00;
+      --background-dark: #110900;
+      --background-overlay: rgba(17, 9, 0, 0.2);
+      --highlight-bg: rgba(255, 187, 0, 0.05);
+      --highlight-hover: rgba(255, 187, 0, 0.1);
+      --text-shadow: 0 0 3px var(--primary-color), 0 0 5px var(--primary-color);
+      --scanline-color: rgba(0, 0, 0, 0.05);
+    }
+    body.blue-theme {
+      --primary-color: #00ccff;
+      --background-dark: #001111;
+      --background-overlay: rgba(0, 17, 17, 0.2);
+      --highlight-bg: rgba(0, 204, 255, 0.05);
+      --highlight-hover: rgba(0, 204, 255, 0.1);
+      --text-shadow: 0 0 3px var(--primary-color), 0 0 5px var(--primary-color);
+      --scanline-color: rgba(0, 0, 0, 0.05);
+    }
+    @media (max-width: 600px) {
+      header, section {
+        padding: 1.5rem;
+      }
+      header h1 {
+        font-size: 2.8rem;
+      }
+      header p {
+        font-size: 1.3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      .sound-toggle, .lang-toggle, .theme-toggle, .resume-button {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+      }
+      .sound-toggle {
+        right: 0.4rem;
+      }
+      .lang-toggle {
+        right: 4.4rem;
+      }
+      .theme-toggle {
+        right: 8.4rem;
+      }
+      .resume-button {
+        right: 12.4rem;
+      }
+      .popup {
+        padding: 1.5rem;
+        max-width: 90%;
+      }
+      .popup h3 {
+        font-size: 1.6rem;
+      }
+      .popup p {
+        font-size: 1.1rem;
+      }
+      .terminal-prompt, .terminal-input {
+        font-size: 1.1rem;
+      }
+      .terminal-output {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pantalla-inicial" id="intro">
+    <span data-lang-key="booting">>> BOOTING WOPR...</span>
+  </div>
+
+  <div class="popup-overlay" id="popupOverlay" role="presentation"></div>
+  <div class="popup" id="popup" role="dialog" aria-labelledby="popupTitle" aria-modal="true">
+    <button class="popup-close" onclick="closePopup()" aria-label="Close popup">X</button>
+    <h3 id="popupTitle"></h3>
+    <p id="popupDescription"></p>
+    <p id="popupLink"></p>
+  </div>
+
+  <audio id="bg-music" data-src="https://cdn.pixabay.com/audio/2023/10/29/14-16-19-672_200x200.mp3" preload="none" loop></audio>
+  <audio id="click-sound" data-src="https://cdn.pixabay.com/audio/2022/05/13/16-35-43-54_200x200.mp3" preload="none"></audio>
+  <audio id="key-sound" data-src="https://cdn.pixabay.com/audio/2022/08/02/00-15-02-598_200x200.mp3" preload="none"></audio>
+  <audio id="glitch-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-50-43-204_200x200.mp3" preload="none"></audio>
+  <audio id="nav-hover-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-43-24-182_200x200.mp3" preload="none"></audio>
+  <audio id="boot-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-46-47-400_200x200.mp3" preload="auto"></audio>
+
+  <header id="home" onclick="playClick()" onmouseover="playNavHover()" style="--section-index: 0;" role="banner">
+    <h1 data-lang-key="header_title">PORTAFOLIO DE DORJEE</h1>
+    <p data-lang-key="header_subtitle">Desarrollador. Explorador digital. Buscador de bugs.</p>
+  </header>
+
+  <section id="about" style="--section-index: 1;" aria-labelledby="about-title">
+    <h2 id="about-title" onclick="toggleSection('about')" onmouseover="playKey()" data-lang-key="about_title" role="button" aria-expanded="false" aria-controls="about-content" tabindex="0">SOBRE MÍ</h2>
+    <div class="about-content" id="about-content">
+      <p data-popup-id="about" onmouseover="playKey()" data-lang-key="about_content" role="button" tabindex="0">Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.</p>
+    </div>
+  </section>
+
+  <section id="skills" style="--section-index: 2;" aria-labelledby="skills-title">
+    <h2 id="skills-title" onclick="toggleSection('skills')" onmouseover="playKey()" data-lang-key="skills_title" role="button" aria-expanded="false" aria-controls="skills-content" tabindex="0">HABILIDADES</h2>
+    <div class="habilidades" id="skills-content">
+      <div class="habilidad" data-popup-id="programming" onclick="openPopup('programming')" onmouseover="playGlitch()" role="button" tabindex="0">
+        <h3 data-lang-key="programming_title">>> PROGRAMACIÓN</h3>
+        <p data-lang-key="programming_content">C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS</p>
+      </div>
+      <div class="habilidad" data-popup-id="tools" onclick="openPopup('tools')" onmouseover="playGlitch()" role="button" tabindex="0">
+        <h3 data-lang-key="tools_title">>> HERRAMIENTAS</h3>
+        <p data-lang-key="tools_content">Git, Docker, Linux, NAS</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" style="--section-index: 3;" aria-labelledby="projects-title">
+    <h2 id="projects-title" onclick="toggleSection('projects')" onmouseover="playKey()" data-lang-key="projects_title" role="button" aria-expanded="false" aria-controls="projects-content" tabindex="0">PROYECTOS</h2>
+    <div class="proyectos" id="projects-content">
+    </div>
+  </section>
+
+  <section id="contact" style="--section-index: 4;" aria-labelledby="contact-title">
+    <h2 id="contact-title" onclick="toggleSection('contact')" onmouseover="playKey()" data-lang-key="contact_title" role="button" aria-expanded="false" aria-controls="contact-content" tabindex="0">CONTACTO</h2>
+    <div class="contacto" id="contact-content">
+      <div class="contacto-item" data-popup-id="email" onclick="openPopup('email')" onmouseover="playGlitch()" role="button" tabindex="0">
+        <h3 data-lang-key="email_title">>> EMAIL</h3>
+        <p>
+          <span class="contact-icon" onclick="openPopup('email')" onmouseover="playGlitch()" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33">
+              <path d="M2 2h12v2l-6 4-6-4V2zm0 2v10h12V4l-6 4-6-4z"/>
+            </svg>
+          </span>
+          <a href="/cdn-cgi/l/email-protection#8aeee5f8e0efefeeeffccafaf8e5fee5e4a4e7ef" data-lang-key="email_content"><span class="__cf_email__" data-cfemail="a2868d90888787868794a292908d968d8ccc8f87">[email&#160;protected]</span></a>
+        </p>
+      </div>
+      <div class="contacto-item" data-popup-id="github" onclick="openPopup('github')" onmouseover="playGlitch()" role="button" tabindex="0">
+        <h3 data-lang-key="github_title">>> GITHUB</h3>
+        <p>
+          <span class="contact-icon" onclick="openPopup('github')" onmouseover="playGlitch()" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </span>
+          <a href="https://github.com/Dorjeekhb" target="_blank" data-lang-key="github_content">github.com/Dorjeekhb</a>
+        </p>
+      </div>
+      <div class="contacto-item" data-popup-id="linkedin" onclick="openPopup('linkedin')" onmouseover="playGlitch()" role="button" tabindex="0">
+        <h3 data-lang-key="linkedin_title">>> LINKEDIN</h3>
+        <p>
+          <span class="contact-icon" onclick="openPopup('linkedin')" onmouseover="playGlitch()" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33">
+              <path d="M0 1.5C0 .67.67 0 1.5 0h13c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5h-13A1.5 1.5 0 010 14.5v-13zM3 4a1 1 0 100-2 1 1 0 000 2zm0 1.5v7h2v-7H3zm4 0v7h2v-3.5c0-1 .5-2 1.5-2s1.5 1 1.5 2V12h2v-3.5c0-2.5-1.5-3.5-3.5-3.5H7z"/>
+            </svg>
+          </span>
+          <a href="https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/" target="_blank" data-lang-key="linkedin_content">linkedin.com/in/dorje-khampa-herrezuelo-blasco</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer onclick="playClick()" onmouseover="playNavHover()" data-lang-key="footer">© 2025 Dorjee // root@pipboy</footer>
+
+  <div class="terminal" id="terminal" role="region" aria-label="Terminal" aria-live="polite">
+    <div class="terminal-output" id="terminalOutput"></div>
+    <div class="terminal-input-container">
+      <span class="terminal-prompt">>> </span>
+      <input type="text" class="terminal-input" id="terminalInput" placeholder="" data-lang-key="terminal_placeholder" aria-label="Enter command" autocomplete="off" />
+    </div>
+    <button class="sound-toggle" id="soundToggle" onclick="toggleSound()">SONIDO: ON</button>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">IDIOMA: ES</button>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">TEMA: VERDE</button>
+    <a class="resume-button" href="https://dorjee-portfolio.example.com/resume.pdf" download>RESUMÉ</a>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    let soundEnabled = true;
+    let currentLang = 'es';
+    let currentTheme = 'verde';
+    let commandHistory = [];
+    let historyIndex = -1;
+    let suggestions = [];
+    let suggestionIndex = -1;
+    let lastScrollTop = 0;
+
+    const langData = {
+      es: {
+        booting: ">> BOOTING WOPR...",
+        header_title: "PORTAFOLIO DE DORJEE",
+        header_subtitle: "Desarrollador. Explorador digital. Buscador de bugs.",
+        about_title: "SOBRE MÍ",
+        about_content: "Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.",
+        skills_title: "HABILIDADES",
+        programming_title: ">> PROGRAMACIÓN",
+        programming_content: "C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS",
+        tools_title: ">> HERRAMIENTAS",
+        tools_content: "Git, Docker, Linux, NAS",
+        projects_title: "PROYECTOS",
+        contact_title: "CONTACTO",
+        email_title: ">> EMAIL",
+        email_content: "dorjeedev@proton.me",
+        github_title: ">> GITHUB",
+        github_content: "github.com/Dorjeekhb",
+        linkedin_title: ">> LINKEDIN",
+        linkedin_content: "linkedin.com/in/dorje-khampa-herrezuelo-blasco",
+        footer: "© 2025 Dorjee // root@pipboy",
+        terminal_placeholder: ">> Escribe un comando (ej., ir a proyectos, abrir email, ayuda)",
+        terminal_response: {
+          home: ">> Comando ejecutado: Navegando a HOME",
+          about: ">> Comando ejecutado: Navegando a SOBRE MÍ",
+          skills: ">> Comando ejecutado: Navegando a HABILIDADES",
+          projects: ">> Comando ejecutado: Navegando a PROYECTOS",
+          contact: ">> Comando ejecutado: Navegando a CONTACTO",
+          open_email: ">> Comando ejecutado: Abriendo EMAIL",
+          open_github: ">> Comando ejecutado: Abriendo GITHUB",
+          open_linkedin: ">> Comando ejecutado: Abriendo LINKEDIN",
+          open_programming: ">> Comando ejecutado: Abriendo PROGRAMACIÓN",
+          open_tools: ">> Comando ejecutado: Abriendo HERRAMIENTAS",
+          open_about: ">> Comando ejecutado: Abriendo SOBRE MÍ",
+          toggle_sound: ">> Comando ejecutado: Alternando sonido",
+          toggle_language: ">> Comando ejecutado: Alternando idioma",
+          toggle_theme: ">> Comando ejecutado: Alternando tema",
+          clear: ">> Comando ejecutado: Limpiando terminal",
+          help: ">> AYUDA: Comandos disponibles",
+          error: ">> ERROR: COMANDO NO ENCONTRADO"
+        },
+        help_content: `ir a <sección>   Navegar a una sección (home, about, skills, projects, contact)
+abrir <item>     Abrir un popup (email, github, linkedin, programming, tools, about)
+alternar sonido  Activar/desactivar el sonido
+alternar idioma  Cambiar idioma entre español e inglés
+alternar tema    Cambiar tema entre verde, ámbar y azul
+limpiar          Limpiar la salida del terminal
+ayuda            Mostrar este mensaje de ayuda`,
+        popup: {
+          about: {
+            title: "SOBRE MÍ",
+            description: "Apasionado por la programación. Siempre explorando nuevas tecnologías y desafíos. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América. Mis proyectos combinan creatividad técnica y estética futurista, inspirados por mundos distópicos y narrativas inmersivas.",
+            link: ""
+          },
+          programming: {
+            title: "PROGRAMACIÓN",
+            description: "Dominio de lenguajes y herramientas como C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML y CSS para desarrollo de videojuegos y aplicaciones web.",
+            link: ""
+          },
+          tools: {
+            title: "HERRAMIENTAS",
+            description: "Experiencia en Git para control de versiones, Docker para contenedores, Linux para servidores y NAS para almacenamiento.",
+            link: ""
+          },
+          email: {
+            title: "EMAIL",
+            description: "Contáctame directamente para colaboraciones, proyectos o consultas técnicas.",
+            link: "mailto:dorjeedev@proton.me"
+          },
+          github: {
+            title: "GITHUB",
+            description: "Explora mis repositorios en GitHub, donde subo proyectos de código abierto y experimentos.",
+            link: "https://github.com/Dorjeekhb"
+          },
+          linkedin: {
+            title: "LINKEDIN",
+            description: "Conecta conmigo en LinkedIn para networking profesional y actualizaciones sobre mi carrera.",
+            link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/"
+          }
+        },
+        popup_link: "Ir al enlace"
+      },
+      en: {
+        booting: ">> BOOTING PIP-BOY 3000 Mk IV...",
+        header_title: "Dorjee's Portfolio",
+        header_subtitle: "Developer. Digital Explorer. Bug Hunter.",
+        about_title: "About Me",
+        about_content: "I'm passionate about systems, automation, and impossible challenges. Learning Japanese while hacking reality. I study Video Game Development at UCM in Madrid. I also studied Anthropology and completed a Master's in History and Anthropology of America.",
+        skills_title: "Skills",
+        programming_title: ">> Programming",
+        programming_content: "C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS",
+        tools_title: ">> Tools",
+        tools_content: "Git, Docker, Linux, NAS",
+        projects_title: "Projects",
+        contact_title: "Contact",
+        email_title: ">> Email",
+        email_content: "dorjeedev@proton.me",
+        github_title: ">> GitHub",
+        github_content: "github.com/Dorjeekhb",
+        linkedin_title: ">> LinkedIn",
+        linkedin_content: "linkedin.com/in/dorje-khampa-herrezuelo-blasco",
+        footer: "© 2025 Dorjee // root@pipboy",
+        terminal_placeholder: ">> Type command (e.g., goto projects, open email, help)",
+        terminal_response: {
+          home: ">> Command executed: Navigating to Home",
+          about: ">> Command executed: Navigating to About",
+          skills: ">> Command executed: Navigating to Skills",
+          projects: ">> Command executed: Navigating to Projects",
+          contact: ">> Command executed: Navigating to Contact",
+          open_email: ">> Command executed: Opening Email",
+          open_github: ">> Command executed: Opening GitHub",
+          open_linkedin: ">> Command executed: Opening LinkedIn",
+          open_programming: ">> Command executed: Opening Programming",
+          open_tools: ">> Command executed: Opening Tools",
+          open_about: ">> Command executed: Opening About",
+          toggle_sound: ">> Command executed: Toggling sound",
+          toggle_language: ">> Command executed: Toggling language",
+          toggle_theme: ">> Command executed: Toggling theme",
+          clear: ">> Command executed: Clearing terminal",
+          help: ">> HELP: Available commands",
+          error: ">> ERROR: COMMAND NOT FOUND"
+        },
+        help_content: `goto <section>   Navigate to a section (home, about, skills, projects, contact)
+open <item>      Open a popup (email, github, linkedin, programming, tools, about)
+toggle sound     Toggle sound on/off
+toggle language  Toggle language between English and Spanish
+toggle theme     Toggle theme between green, amber, and blue
+clear            Clear the terminal output
+help             Display this help message`,
+        popup: {
+          about: {
+            title: "About Me",
+            description: "Passionate about programming and cyberpunk culture. Always exploring new technologies and challenges. I learn Japanese and draw inspiration from anime and horror. I study Video Game Development at UCM in Madrid. I also studied Anthropology and completed a Master's in History and Anthropology of America. My projects blend technical creativity and futuristic aesthetics, inspired by dystopian worlds and immersive narratives.",
+            link: ""
+          },
+          programming: {
+            title: "Programming",
+            description: "Proficiency in languages and tools like C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, and CSS for game development and web applications.",
+            link: ""
+          },
+          tools: {
+            title: "Tools",
+            description: "Experience with Git for version control, Docker for containers, Linux for servers, and NAS for storage.",
+            link: ""
+          },
+          email: {
+            title: "Email",
+            description: "Contact me directly for collaborations, projects, or technical inquiries.",
+            link: "mailto:dorjeedev@proton.me"
+          },
+          github: {
+            title: "GitHub",
+            description: "Explore my repositories on GitHub, where I share open-source projects and experiments.",
+            link: "https://github.com/Dorjeekhb"
+          },
+          linkedin: {
+            title: "LinkedIn",
+            description: "Connect with me on LinkedIn for professional networking and career updates.",
+            link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/"
+          }
+        },
+        popup_link: "Go to link"
+      }
+    };
+
+    // Audio Handling
+    function loadAudio(id) {
+      const audio = document.getElementById(id);
+      if (audio.getAttribute('src')) return;
+      audio.setAttribute('src', audio.dataset.src);
+      audio.load();
+    }
+
+    function playClick() {
+      if (soundEnabled) {
+        loadAudio('click-sound');
+        const click = document.getElementById('click-sound');
+        click.currentTime = 0;
+        click.play();
+      }
+    }
+
+    function playKey() {
+      if (soundEnabled) {
+        loadAudio('key-sound');
+        const key = document.getElementById('key-sound');
+        key.currentTime = 0;
+        key.play();
+      }
+    }
+
+    function playGlitch() {
+      if (soundEnabled) {
+        loadAudio('glitch-sound');
+        const glitch = document.getElementById('glitch-sound');
+        glitch.currentTime = 0;
+        glitch.play();
+      }
+    }
+
+    function playNavHover() {
+      if (soundEnabled) {
+        loadAudio('nav-hover-sound');
+        const navHover = document.getElementById('nav-hover-sound');
+        navHover.currentTime = 0;
+        navHover.play();
+      }
+    }
+
+    function playBoot() {
+      if (soundEnabled) {
+        loadAudio('boot-sound');
+        const boot = document.getElementById('boot-sound');
+        boot.currentTime = 0;
+        boot.play();
+      }
+    }
+
+    // Theme Handling
+    function toggleTheme() {
+      const themes = ['verde', 'amber', 'blue'];
+      const currentIndex = themes.indexOf(currentTheme);
+      const nextIndex = (currentIndex + 1) % themes.length;
+      currentTheme = themes[nextIndex];
+      document.body.classList.remove('amber-theme', 'blue-theme');
+      if (currentTheme === 'amber') document.body.classList.add('amber-theme');
+      if (currentTheme === 'blue') document.body.classList.add('blue-theme');
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle.textContent = `TEMA: ${currentTheme.toUpperCase()}`;
+      playClick();
+      const responseText = langData[currentLang].terminal_response.toggle_theme;
+      const terminalOutput = document.getElementById('terminalOutput');
+      terminalOutput.innerHTML += `<div>${responseText}</div>`;
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      speakText(responseText.replace('>> ', ''));
+    }
+
+    // Language Handling
+    function toggleLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      const langToggle = document.getElementById('langToggle');
+      langToggle.textContent = `IDIOMA: ${currentLang.toUpperCase()}`;
+      updateLanguage();
+      playClick();
+      const responseText = langData[currentLang].terminal_response.toggle_language;
+      const terminalOutput = document.getElementById('terminalOutput');
+      terminalOutput.innerHTML += `<div>${responseText}</div>`;
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      speakText(responseText.replace('>> ', ''));
+    }
+
+    function updateLanguage() {
+      document.querySelectorAll('[data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (key === 'terminal_placeholder') {
+          element.placeholder = langData[currentLang][key];
+        } else if (langData[currentLang][key]) {
+          element.textContent = langData[currentLang][key];
+        }
+      });
+      document.documentElement.lang = currentLang;
+      updateTerminalPlaceholder();
+    }
+
+    function updateTerminalPlaceholder() {
+      const terminalInput = document.getElementById('terminalInput');
+      const examples = currentLang === 'es' ? 'ir a proyectos, abrir email, ayuda' : 'goto projects, open email, help';
+      terminalInput.placeholder = `>> ${currentLang === 'es' ? 'Escribe un comando' : 'Type a command'} (${examples})`;
+    }
+
+    function speakText(text) {
+      if (soundEnabled && window.speechSynthesis) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        const voices = speechSynthesis.getVoices();
+        const voice = voices.find(v => v.lang === (currentLang === 'es' ? 'es-ES' : 'en-US')) || voices[0];
+        utterance.voice = voice;
+        utterance.pitch = 0.8;
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Popup Handling
+    function openPopup(id) {
+      const data = langData[currentLang].popup[id];
+      if (data) {
+        const popup = document.getElementById('popup');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupDescription = document.getElementById('popupDescription');
+        const popupLink = document.getElementById('popupLink');
+        const popupOverlay = document.getElementById('popupOverlay');
+
+        popupTitle.textContent = data.title;
+        popupDescription.textContent = data.description;
+        popupLink.innerHTML = data.link ? `<a href="${data.link}" target="_blank">${langData[currentLang].popup_link}</a>` : '';
+
+        popup.classList.add('open');
+        popupOverlay.classList.add('open');
+        popup.focus();
+        playClick();
+      }
+    }
+
+    function closePopup() {
+      const popup = document.getElementById('popup');
+      const popupOverlay = document.getElementById('popupOverlay');
+      popup.classList.remove('open');
+      popupOverlay.classList.remove('open');
+      document.getElementById('terminalInput').focus();
+      playClick();
+    }
+
+    // Sound Handling
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const toggleButton = document.getElementById('soundToggle');
+      toggleButton.textContent = `SONIDO: ${soundEnabled ? 'ON' : 'OFF'}`;
+      if (!soundEnabled) {
+        document.getElementById('bg-music').pause();
+        window.speechSynthesis.cancel();
+      } else {
+        loadAudio('bg-music');
+        document.getElementById('bg-music').play().catch(() => {});
+      }
+      playClick();
+      const responseText = langData[currentLang].terminal_response.toggle_sound;
+      const terminalOutput = document.getElementById('terminalOutput');
+      terminalOutput.innerHTML += `<div>${responseText}</div>`;
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      speakText(responseText.replace('>> ', ''));
+    }
+
+    // Section Handling
+    function toggleSection(sectionId) {
+      const sections = ['about', 'skills', 'projects', 'contact'];
+      sections.forEach(id => {
+        const content = document.querySelector(`#${id} > div`);
+        const header = document.querySelector(`#${id} > h2`);
+        if (content && header) {
+          if (id === sectionId) {
+            content.classList.toggle('open');
+            header.classList.toggle('open');
+            header.setAttribute('aria-expanded', content.classList.contains('open'));
+          } else {
+            content.classList.remove('open');
+            header.classList.remove('open');
+            header.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+      playClick();
+    }
+
+    function setActiveSection(sectionId) {
+      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      sections.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.classList.remove('active');
+      });
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('active');
+        if (sectionId !== 'home') {
+          toggleSection(sectionId);
+        } else {
+          sections.forEach(id => {
+            const content = document.querySelector(`#${id} > div`);
+            const header = document.querySelector(`#${id} > h2`);
+            if (content && header) {
+              content.classList.remove('open');
+              header.classList.remove('open');
+              header.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+      }
+    }
+
+    // Terminal Command Handling
+    function handleCommand(command) {
+      const terminalOutput = document.getElementById('terminalOutput');
+      terminalOutput.innerHTML += `<div>>> ${command}</div>`;
+      let responseText = '';
+      const prefix = currentLang === 'es' ? 'ir a' : 'goto';
+      const openPrefix = currentLang === 'es' ? 'abrir' : 'open';
+      const togglePrefix = currentLang === 'es' ? 'alternar' : 'toggle';
+      const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
+      const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
+      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about'];
+
+      if (command === helpCommand) {
+        responseText = langData[currentLang].terminal_response.help;
+        terminalOutput.innerHTML += `<div>${responseText}</div>`;
+        terminalOutput.innerHTML += `<div>${langData[currentLang].help_content}</div>`;
+        speakText(responseText.replace('>> ', ''));
+      } else if (command === clearCommand) {
+        terminalOutput.innerHTML = '';
+        responseText = langData[currentLang].terminal_response.clear;
+        terminalOutput.innerHTML += `<div>${responseText}</div>`;
+        speakText(responseText.replace('>> ', ''));
+      } else if (command.startsWith(prefix)) {
+        const section = command.replace(prefix, '').trim();
+        if (sections.includes(section)) {
+          document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+          setActiveSection(section);
+          responseText = langData[currentLang].terminal_response[section];
+          terminalOutput.innerHTML += `<div>${responseText}</div>`;
+          speakText(responseText.replace('>> ', ''));
+        } else {
+          responseText = langData[currentLang].terminal_response.error;
+          terminalOutput.innerHTML += `<div>${responseText}</div>`;
+          speakText(responseText.replace('>> ', ''));
+        }
+      } else if (command.startsWith(openPrefix)) {
+        const item = command.replace(openPrefix, '').trim().replace(/ /g, '-');
+        if (popupItems.includes(item)) {
+          openPopup(item);
+          responseText = langData[currentLang].terminal_response[`open_${item}`];
+          terminalOutput.innerHTML += `<div>${responseText}</div>`;
+          speakText(responseText.replace('>> ', ''));
+        } else {
+          responseText = langData[currentLang].terminal_response.error;
+          terminalOutput.innerHTML += `<div>${responseText}</div>`;
+          speakText(responseText.replace('>> ', ''));
+        }
+      } else if (command === `${togglePrefix} sound` || command === `${togglePrefix} sonido`) {
+        toggleSound();
+        responseText = langData[currentLang].terminal_response.toggle_sound;
+        terminalOutput.innerHTML += `<div>${responseText}</div>`;
+        speakText(responseText.replace('>> ', ''));
+      } else if (command === `${togglePrefix} language` || command === `${togglePrefix} idioma`) {
+        toggleLanguage();
+        responseText = langData[currentLang].terminal_response.toggle_language;
+        terminalOutput.innerHTML += `<div>${responseText}</div>`;
+        speakText(responseText.replace('>> ', ''));
+      } else if (command === `${togglePrefix} theme` || command === `${togglePrefix} tema`) {
+        toggleTheme();
+        responseText = langData[currentLang].terminal_response.toggle_theme;
+        terminalOutput.innerHTML += `<div>${responseText}</div>`;
+        speakText(responseText.replace('>> ', ''));
+      } else {
+        responseText = langData[currentLang].terminal_response.error;
+        terminalOutput.innerHTML += `<div>${responseText}</div>`;
+        speakText(responseText.replace('>> ', ''));
+      }
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      suggestions = [];
+      suggestionIndex = -1;
+      updateSuggestions();
+    }
+
+    // Autocomplete Handling
+    function autocompleteCommand(input) {
+      suggestions = [];
+      suggestionIndex = -1;
+      const prefix = currentLang === 'es' ? 'ir a' : 'goto';
+      const openPrefix = currentLang === 'es' ? 'abrir' : 'open';
+      const togglePrefix = currentLang === 'es' ? 'alternar' : 'toggle';
+      const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
+      const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
+      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about'];
+      const toggleCommands = currentLang === 'es' ? ['sonido', 'idioma', 'tema'] : ['sound', 'language', 'theme'];
+
+      const lowerInput = input.toLowerCase().trim();
+      if (!lowerInput) return;
+
+      if (prefix.startsWith(lowerInput)) {
+        suggestions.push(prefix);
+      } else if (lowerInput.startsWith(prefix)) {
+        const sectionInput = lowerInput.replace(prefix, '').trim();
+        suggestions = sections
+          .filter(section => section.startsWith(sectionInput))
+          .map(section => `${prefix} ${section}`);
+      }
+
+      if (openPrefix.startsWith(lowerInput)) {
+        suggestions.push(openPrefix);
+      } else if (lowerInput.startsWith(openPrefix)) {
+        const itemInput = lowerInput.replace(openPrefix, '').trim();
+        suggestions = popupItems
+          .filter(item => item.startsWith(itemInput))
+          .map(item => `${openPrefix} ${item}`);
+      }
+
+      if (togglePrefix.startsWith(lowerInput)) {
+        suggestions.push(togglePrefix);
+      } else if (lowerInput.startsWith(togglePrefix)) {
+        const toggleInput = lowerInput.replace(togglePrefix, '').trim();
+        suggestions = toggleCommands
+          .filter(toggle => toggle.startsWith(toggleInput))
+          .map(toggle => `${togglePrefix} ${toggle}`);
+      }
+
+      if (clearCommand.startsWith(lowerInput)) {
+        suggestions.push(clearCommand);
+      }
+
+      if (helpCommand.startsWith(lowerInput)) {
+        suggestions.push(helpCommand);
+      }
+
+      updateSuggestions();
+    }
+
+    function updateSuggestions() {
+      const terminalOutput = document.getElementById('terminalOutput');
+      const existingSuggestions = document.querySelectorAll('.suggestion');
+      existingSuggestions.forEach(suggestion => suggestion.remove());
+
+      if (suggestions.length > 0) {
+        suggestions.forEach((suggestion, index) => {
+          const suggestionElement = document.createElement('div');
+          suggestionElement.className = 'suggestion';
+          suggestionElement.textContent = `>> ${suggestion}`;
+          suggestionElement.setAttribute('role', 'option');
+          suggestionElement.setAttribute('aria-selected', index === suggestionIndex);
+          if (index === suggestionIndex) {
+            suggestionElement.classList.add('selected');
+          }
+          suggestionElement.addEventListener('click', () => {
+            document.getElementById('terminalInput').value = suggestion;
+            handleCommand(suggestion);
+            playClick();
+          });
+          terminalOutput.appendChild(suggestionElement);
+        });
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+      }
+    }
+
+    // Scroll Handling for Header
+    function handleScroll() {
+      const header = document.getElementById('home');
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+        header.classList.add('hidden');
+      } else {
+        header.classList.remove('hidden');
+      }
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    }
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      window.speechSynthesis.onvoiceschanged = () => {
+        window.speechSynthesis.getVoices();
+      };
+
+      const bg = document.getElementById('bg-music');
+      bg.volume = 0.3;
+      if (soundEnabled) {
+        loadAudio('bg-music');
+        bg.play().catch(() => {
+          document.body.addEventListener('click', () => {
+            if (soundEnabled) bg.play();
+          }, { once: true });
+        });
+      }
+
+      playBoot();
+
+      const intro = document.getElementById('intro');
+      const terminal = document.getElementById('terminal');
+      setTimeout(() => {
+        intro.style.display = 'none';
+        terminal.style.display = 'block';
+        document.getElementById('terminalInput').focus();
+        document.getElementById('home').classList.add('active');
+      }, 5000);
+
+      const terminalInput = document.getElementById('terminalInput');
+      const terminalOutput = document.getElementById('terminalOutput');
+
+      terminalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const command = terminalInput.value.trim().toLowerCase();
+          if (command) {
+            commandHistory.unshift(command);
+            historyIndex = -1;
+            handleCommand(command);
+            terminalInput.value = '';
+            playClick();
+          }
+        } else if (e.key === 'ArrowUp') {
+          if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            terminalInput.value = commandHistory[historyIndex];
+            suggestions = [];
+            suggestionIndex = -1;
+            updateSuggestions();
+            playKey();
+          }
+        } else if (e.key === 'ArrowDown') {
+          if (historyIndex > -1) {
+            historyIndex--;
+            terminalInput.value = historyIndex === -1 ? '' : commandHistory[historyIndex];
+            suggestions = [];
+            suggestionIndex = -1;
+            updateSuggestions();
+            playKey();
+          }
+        } else if (e.key === 'Tab' && suggestions.length > 0) {
+          e.preventDefault();
+          suggestionIndex = (suggestionIndex + 1) % suggestions.length;
+          terminalInput.value = suggestions[suggestionIndex];
+          updateSuggestions();
+          playKey();
+        } else {
+          autocompleteCommand(terminalInput.value);
+          playKey();
+        }
+      });
+
+      terminalInput.addEventListener('input', () => {
+        autocompleteCommand(terminalInput.value);
+      });
+
+      document.querySelectorAll('h2').forEach(h2 => {
+        h2.addEventListener('click', () => {
+          const sectionId = h2.parentElement.id;
+          setActiveSection(sectionId);
+          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        });
+        h2.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const sectionId = h2.parentElement.id;
+            setActiveSection(sectionId);
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      document.querySelectorAll('.proyecto, .habilidad, .contacto-item, .about-content p').forEach(item => {
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const popupId = item.getAttribute('data-popup-id');
+            if (popupId) openPopup(popupId);
+          }
+        });
+      });
+
+      document.getElementById('popupOverlay').addEventListener('click', closePopup);
+
+      document.querySelector('.popup-close').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          closePopup();
+        }
+      });
+
+      window.addEventListener('scroll', handleScroll);
+
+      updateLanguage();
+    });
+  </script>
+</body>
+</html>
