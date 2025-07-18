@@ -543,10 +543,11 @@ body.popup-open {
 /* Responsive adjustments */
 @media (max-width: 600px) {
   #audio-player {
-    width: 90%; /* Full width on mobile */
-    max-width: 300px;
-    right: 5px;
-    top: 5px;
+    top: auto; /* Remove top positioning */
+    bottom: 80px; /* Position above terminal and bottom buttons; adjust if needed */
+    right: 10px;
+    width: 200px; /* Smaller width to reduce obstruction */
+    padding: 8px; /* Slightly compact padding */
   }
 
   .player-title {
@@ -554,7 +555,7 @@ body.popup-open {
   }
 
   #audio-player button {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 4px 8px;
   }
 }
