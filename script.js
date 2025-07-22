@@ -11,8 +11,8 @@ let lastScrollTop = 0;
 const langData = {
   es: {
     booting: ">> BOOTING WOPR...",
-    header_title: "PORTAFOLIO DE DORJEE",
-    header_subtitle: "Desarrollador. Explorador digital. Buscador de bugs.",
+    header_title: "DORJEE",
+    header_subtitle: "Desarrollador. La única forma de ganar es no jugar",
     about_title: "SOBRE MÍ",
     about_content: "Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.",
     education_title: "EDUCACIÓN",
@@ -25,16 +25,12 @@ const langData = {
     education_degree3: "Grado en Antropología",
     education_institution3: "Universidad Complutense de Madrid (UCM)",
     education_years3: "2016 - 2020",
+    my_projects_title: "MIS PROYECTOS",
     skills_title: "HABILIDADES",
     programming_title: ">> PROGRAMACIÓN",
     programming_content: "C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS",
     tools_title: ">> HERRAMIENTAS",
     tools_content: "Git, Docker, Linux, NAS",
-    projects_title: "PROYECTOS",
-    project_title1: "Proyecto 1: Juego de Aventuras",
-    project_desc1: "Desarrollo de un juego de aventuras en Unity con elementos de puzzle y narrativa inmersiva.",
-    project_title2: "Proyecto 2: Aplicación Web",
-    project_desc2: "Aplicación web para gestión de tareas utilizando React y Node.js.",
     contact_title: "CONTACTO",
     email_title: ">> EMAIL",
     email_content: "dorjeedev@proton.me",
@@ -43,14 +39,13 @@ const langData = {
     linkedin_title: ">> LINKEDIN",
     linkedin_content: "linkedin.com/in/dorje-khampa-herrezuelo-blasco",
     footer: "© 2025 Dorjee // root@pipboy",
-    resume_button: "CURRÍCULUM",
+    resume_button: "DESCARGAR CV",
     terminal_placeholder: ">> Escribe un comando (ej., ir a proyectos, abrir email, ayuda)",
     terminal_response: {
       home: ">> Comando ejecutado: Navegando a HOME",
       about: ">> Comando ejecutado: Navegando a SOBRE MÍ",
       education: ">> Comando ejecutado: Navegando a EDUCACIÓN",
-      skills: ">> Comando ejecutado: Navegando a HABILIDADES",
-      projects: ">> Comando ejecutado: Navegando a PROYECTOS",
+      my_projects: ">> Comando ejecutado: Navegando a MIS PROYECTOS",
       contact: ">> Comando ejecutado: Navegando a CONTACTO",
       open_email: ">> Comando ejecutado: Abriendo EMAIL",
       open_github: ">> Comando ejecutado: Abriendo GITHUB",
@@ -58,8 +53,7 @@ const langData = {
       open_programming: ">> Comando ejecutado: Abriendo PROGRAMACIÓN",
       open_tools: ">> Comando ejecutado: Abriendo HERRAMIENTAS",
       open_about: ">> Comando ejecutado: Abriendo SOBRE MÍ",
-      open_project1: ">> Comando ejecutado: Abriendo PROYECTO 1",
-      open_project2: ">> Comando ejecutado: Abriendo PROYECTO 2",
+      open_manageyourlife: ">> Comando ejecutado: Abriendo MANAGEYOURLIFE",
       toggle_sound: ">> Comando ejecutado: Alternando sonido",
       toggle_language: ">> Comando ejecutado: Alternando idioma",
       toggle_theme: ">> Comando ejecutado: Alternando tema",
@@ -67,8 +61,8 @@ const langData = {
       help: ">> AYUDA: Comandos disponibles",
       error: ">> ERROR: COMANDO NO ENCONTRADO"
     },
-    help_content: `ir a <sección>   Navegar a una sección (home, about, education, skills, projects, contact)
-abrir <item>     Abrir un popup (email, github, linkedin, programming, tools, about, project1, project2)
+    help_content: `ir a <sección>   Navegar a una sección (home, about, education, my-projects, contact)
+abrir <item>     Abrir un popup (email, github, linkedin, programming, tools, about, manageyourlife)
 alternar sonido  Activar/desactivar el sonido
 alternar idioma  Cambiar idioma entre español e inglés
 alternar tema    Cambiar tema entre verde, ámbar y azul
@@ -105,19 +99,18 @@ ayuda            Mostrar este mensaje de ayuda`,
         description: "Conecta conmigo en LinkedIn para networking profesional y actualizaciones sobre mi carrera.",
         link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/"
       },
-      project1: {
-        title: "Proyecto 1: Juego de Aventuras",
-        description: "Un juego desarrollado en Unity que incluye mecánicas de puzzle y una historia inmersiva en un mundo cyberpunk.",
-        link: "https://github.com/Dorjeekhb/juego-aventuras"
-      },
-      project2: {
-        title: "Proyecto 2: Aplicación Web",
-        description: "Aplicación para gestión de tareas con interfaz moderna y backend en Node.js.",
-        link: "https://github.com/Dorjeekhb/app-web-tareas"
+      manageyourlife: {
+        title: "ManageYourLife (Android)",
+        description: "Una aplicación Android para la gestión de tareas con etiquetas, prioridades y búsqueda por fecha. Diseñada con Android Studio, ofrece una interfaz intuitiva para organizar tareas diarias.",
+        link: "https://github.com/Dorjeekhb/manageyourlife",
+        images: [
+          "images/2.png",
+          "images/3.png",
+          "images/1.png"
+        ]
       }
     },
     popup_link: "Ir al enlace",
-    // New additions for toggles
     sound_label: "SONIDO",
     lang_label: "IDIOMA",
     theme_label: "TEMA",
@@ -149,16 +142,12 @@ ayuda            Mostrar este mensaje de ayuda`,
     education_degree3: "Degree in Anthropology",
     education_institution3: "Complutense University of Madrid (UCM)",
     education_years3: "2016 - 2020",
+    my_projects_title: "My Projects",
     skills_title: "Skills",
     programming_title: ">> Programming",
     programming_content: "C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS",
     tools_title: ">> Tools",
     tools_content: "Git, Docker, Linux, NAS",
-    projects_title: "Projects",
-    project_title1: "Project 1: Adventure Game",
-    project_desc1: "Development of an adventure game in Unity with puzzle elements and immersive narrative.",
-    project_title2: "Project 2: Web Application",
-    project_desc2: "Web application for task management using React and Node.js.",
     contact_title: "Contact",
     email_title: ">> Email",
     email_content: "dorjeedev@proton.me",
@@ -167,14 +156,13 @@ ayuda            Mostrar este mensaje de ayuda`,
     linkedin_title: ">> LinkedIn",
     linkedin_content: "linkedin.com/in/dorje-khampa-herrezuelo-blasco",
     footer: "© 2025 Dorjee // root@pipboy",
-    resume_button: "RESUMÉ",
+    resume_button: "DOWNLOAD CV",
     terminal_placeholder: ">> Type command (e.g., goto projects, open email, help)",
     terminal_response: {
       home: ">> Command executed: Navigating to Home",
       about: ">> Command executed: Navigating to About",
       education: ">> Command executed: Navigating to Education",
-      skills: ">> Command executed: Navigating to Skills",
-      projects: ">> Command executed: Navigating to Projects",
+      my_projects: ">> Command executed: Navigating to My Projects",
       contact: ">> Command executed: Navigating to Contact",
       open_email: ">> Command executed: Opening Email",
       open_github: ">> Command executed: Opening GitHub",
@@ -182,8 +170,7 @@ ayuda            Mostrar este mensaje de ayuda`,
       open_programming: ">> Command executed: Opening Programming",
       open_tools: ">> Command executed: Opening Tools",
       open_about: ">> Command executed: Opening About",
-      open_project1: ">> Command executed: Opening Project 1",
-      open_project2: ">> Command executed: Opening Project 2",
+      open_manageyourlife: ">> Command executed: Opening MANAGEYOURLIFE",
       toggle_sound: ">> Command executed: Toggling sound",
       toggle_language: ">> Command executed: Toggling language",
       toggle_theme: ">> Command executed: Toggling theme",
@@ -191,8 +178,8 @@ ayuda            Mostrar este mensaje de ayuda`,
       help: ">> HELP: Available commands",
       error: ">> ERROR: COMMAND NOT FOUND"
     },
-    help_content: `goto <section>   Navigate to a section (home, about, education, skills, projects, contact)
-open <item>      Open a popup (email, github, linkedin, programming, tools, about, project1, project2)
+    help_content: `goto <section>   Navigate to a section (home, about, education, my-projects, contact)
+open <item>      Open a popup (email, github, linkedin, programming, tools, about, manageyourlife)
 toggle sound     Toggle sound on/off
 toggle language  Toggle language between English and Spanish
 toggle theme     Toggle theme between green, amber, and blue
@@ -229,19 +216,18 @@ help             Display this help message`,
         description: "Connect with me on LinkedIn for professional networking and career updates.",
         link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/"
       },
-      project1: {
-        title: "Project 1: Adventure Game",
-        description: "A game developed in Unity featuring puzzle mechanics and an immersive story in a cyberpunk world.",
-        link: "https://github.com/Dorjeekhb/adventure-game"
-      },
-      project2: {
-        title: "Project 2: Web Application",
-        description: "Task management web app with modern UI and Node.js backend.",
-        link: "https://github.com/Dorjeekhb/web-app-tasks"
-      }
+      manageyourlife: {
+  title: "ManageYourLife (Android)",
+  description: "Una aplicación Android para la gestión de tareas con etiquetas, prioridades y búsqueda por fecha. Diseñada con Android Studio, ofrece una interfaz intuitiva para organizar tareas diarias.",
+  link: "https://github.com/Dorjeekhb/manageyourlife",
+  images: [
+    "images/1.png",
+    "images/2.png",
+    "images/3.png"
+  ]
+}
     },
     popup_link: "Go to link",
-    // New additions for toggles
     sound_label: "SOUND",
     lang_label: "LANGUAGE",
     theme_label: "THEME",
@@ -345,7 +331,7 @@ function updateLanguage() {
   document.documentElement.lang = currentLang;
   updateTerminalPlaceholder();
   updateResumeLink();
-  updateToggles();  // Ensure toggles update after language change
+  updateToggles();
 }
 
 function updateTerminalPlaceholder() {
@@ -356,7 +342,9 @@ function updateTerminalPlaceholder() {
 
 function updateResumeLink() {
   const resumeButton = document.getElementById('resumeButton');
+  const resumeButtonMobile = document.getElementById('resumeButtonMobile');
   resumeButton.href = currentLang === 'es' ? 'cves.pdf' : 'cveng.pdf';
+  resumeButtonMobile.href = currentLang === 'es' ? 'cves.pdf' : 'cveng.pdf';
 }
 
 function speakText(text) {
@@ -365,9 +353,8 @@ function speakText(text) {
     const voices = speechSynthesis.getVoices();
     const voice = voices.find(v => v.lang === (currentLang === 'es' ? 'es-ES' : 'en-US')) || voices[0];
     utterance.voice = voice;
-    // Randomize pitch and rate for defective robot effect
-    utterance.pitch = 0.8 + (Math.random() * 1.2 - 0.6); // Vary between 0.2 and 2.0
-    utterance.rate = 0.9 + (Math.random() * 0.6 - 0.3); // Vary between 0.6 and 1.5
+    utterance.pitch = 0.8 + (Math.random() * 1.2 - 0.6);
+    utterance.rate = 0.9 + (Math.random() * 0.6 - 0.3);
     window.speechSynthesis.speak(utterance);
   }
 }
@@ -380,11 +367,13 @@ function openPopup(id) {
     const popupTitle = document.getElementById('popupTitle');
     const popupDescription = document.getElementById('popupDescription');
     const popupLink = document.getElementById('popupLink');
+    const popupImages = document.getElementById('popupImages');
     const popupOverlay = document.getElementById('popupOverlay');
 
     popupTitle.textContent = data.title;
     popupDescription.textContent = data.description;
     popupLink.innerHTML = data.link ? `<a href="${data.link}" target="_blank">${langData[currentLang].popup_link}</a>` : '';
+    popupImages.innerHTML = data.images ? data.images.map(src => `<img src="${src}" alt="${data.title} screenshot">`).join('') : '';
 
     popup.classList.add('open');
     popupOverlay.classList.add('open');
@@ -418,20 +407,20 @@ function toggleSound() {
   updateToggles();
 }
 
-// New function to update all toggle buttons
 function updateToggles() {
   const soundToggle = document.getElementById('soundToggle');
   const langToggle = document.getElementById('langToggle');
   const themeToggle = document.getElementById('themeToggle');
+  const langToggleMobile = document.getElementById('langToggleMobile');
 
   soundToggle.textContent = `${langData[currentLang].sound_label}: ${soundEnabled ? langData[currentLang].on : langData[currentLang].off}`;
   langToggle.textContent = `${langData[currentLang].lang_label}: ${langData[currentLang].lang_names[currentLang].toUpperCase()}`;
   themeToggle.textContent = `${langData[currentLang].theme_label}: ${langData[currentLang].theme_names[currentTheme].toUpperCase()}`;
+  langToggleMobile.textContent = `${langData[currentLang].lang_label}: ${langData[currentLang].lang_names[currentLang].toUpperCase()}`;
 }
 
-// Section Handling
 function toggleSection(sectionId) {
-  const sections = ['about', 'education', 'skills', 'projects', 'contact'];
+  const sections = ['about', 'education', 'my-projects', 'contact'];
   sections.forEach(id => {
     const content = document.querySelector(`#${id} > div`);
     const header = document.querySelector(`#${id} > h2`);
@@ -451,7 +440,7 @@ function toggleSection(sectionId) {
 }
 
 function setActiveSection(sectionId) {
-  const sections = ['home', 'about', 'education', 'skills', 'projects', 'contact'];
+  const sections = ['home', 'about', 'education', 'my-projects', 'contact'];
   sections.forEach(id => {
     const element = document.getElementById(id);
     if (element) element.classList.remove('active');
@@ -475,7 +464,24 @@ function setActiveSection(sectionId) {
   }
 }
 
-// Terminal Command Handling
+function handleScroll() {
+  const header = document.getElementById('home');
+  const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Fade effect for header
+  const maxScroll = 100;
+  const opacity = Math.max(0, 1 - currentScrollTop / maxScroll);
+  header.style.opacity = opacity;
+
+  // Existing hide logic
+  if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+    header.classList.add('hidden');
+  } else {
+    header.classList.remove('hidden');
+  }
+  lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+}
+
 function handleCommand(command) {
   const terminalOutput = document.getElementById('terminalOutput');
   terminalOutput.innerHTML += `<div>>> ${command}</div>`;
@@ -485,8 +491,8 @@ function handleCommand(command) {
   const togglePrefix = currentLang === 'es' ? 'alternar' : 'toggle';
   const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
   const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
-  const sections = ['home', 'about', 'education', 'skills', 'projects', 'contact'];
-  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'project1', 'project2'];
+  const sections = ['home', 'about', 'education', 'my-projects', 'contact'];
+  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife'];
 
   if (command === helpCommand) {
     responseText = langData[currentLang].terminal_response.help;
@@ -512,7 +518,7 @@ function handleCommand(command) {
       speakText(responseText.replace('>> ', ''));
     }
   } else if (command.startsWith(openPrefix)) {
-    const item = command.replace(openPrefix, '').trim().replace(/ /g, '-');
+    const item = command.replace(openPrefix, '').trim().replace(/ /g, '');
     if (popupItems.includes(item)) {
       openPopup(item);
       responseText = langData[currentLang].terminal_response[`open_${item}`];
@@ -549,7 +555,6 @@ function handleCommand(command) {
   updateSuggestions();
 }
 
-// Autocomplete Handling
 function autocompleteCommand(input) {
   suggestions = [];
   suggestionIndex = -1;
@@ -558,8 +563,8 @@ function autocompleteCommand(input) {
   const togglePrefix = currentLang === 'es' ? 'alternar' : 'toggle';
   const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
   const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
-  const sections = ['home', 'about', 'education', 'skills', 'projects', 'contact'];
-  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'project1', 'project2'];
+  const sections = ['home', 'about', 'education', 'my-projects', 'contact'];
+  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife'];
   const toggleCommands = currentLang === 'es' ? ['sonido', 'idioma', 'tema'] : ['sound', 'language', 'theme'];
 
   const lowerInput = input.toLowerCase().trim();
@@ -629,20 +634,6 @@ function updateSuggestions() {
   }
 }
 
-// Scroll Handling for Header
-function handleScroll() {
-  const header = document.getElementById('home');
-  const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
-    header.classList.add('hidden');
-  } else {
-    header.classList.remove('hidden');
-  }
-  lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-}
-
-// Button Handlers
 function handleToggleSound() {
   const cmd = currentLang === 'es' ? 'alternar sonido' : 'toggle sound';
   handleCommand(cmd);
@@ -658,33 +649,29 @@ function handleToggleTheme() {
   handleCommand(cmd);
 }
 
-// Initialization
 window.addEventListener('DOMContentLoaded', () => {
-  // Detectar si es un dispositivo móvil
   const isMobile = window.innerWidth <= 600;
-
-  // Referencias a los elementos del terminal y el reproductor de audio
   const terminal = document.getElementById('terminal');
   const audioPlayer = document.getElementById('audio-player');
+  const mobileBottomBar = document.getElementById('mobileBottomBar');
 
-  // Ocultar terminal y reproductor de audio en dispositivos móviles
   if (isMobile) {
     if (terminal) terminal.style.display = 'none';
     if (audioPlayer) audioPlayer.style.display = 'none';
+    if (mobileBottomBar) mobileBottomBar.style.display = 'flex';
   } else {
-    // Mostrar terminal y reproductor en escritorio
     if (terminal) terminal.style.display = 'block';
     if (audioPlayer) audioPlayer.style.display = 'block';
+    if (mobileBottomBar) mobileBottomBar.style.display = 'none';
   }
 
-  // Resto del código existente...
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
   };
 
   const bg = document.getElementById('bg-music');
   bg.volume = 0.3;
-  if (soundEnabled && !isMobile) { // Solo reproducir audio en escritorio
+  if (soundEnabled && !isMobile) {
     loadAudio('bg-music');
     bg.play().catch(() => {
       document.body.addEventListener('click', () => {
@@ -698,12 +685,13 @@ window.addEventListener('DOMContentLoaded', () => {
   const intro = document.getElementById('intro');
   setTimeout(() => {
     intro.style.display = 'none';
-    if (!isMobile) { // Mostrar terminal solo en escritorio
+    if (!isMobile) {
       terminal.style.display = 'block';
     }
     document.getElementById('terminalInput').focus();
     document.getElementById('home').classList.add('active');
   }, 5000);
+
   const terminalInput = document.getElementById('terminalInput');
   const terminalOutput = document.getElementById('terminalOutput');
 
@@ -768,6 +756,10 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelectorAll('.proyecto, .habilidad, .contacto-item, .about-content p, .education-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const popupId = item.getAttribute('data-popup-id');
+      if (popupId) openPopup(popupId);
+    });
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -789,33 +781,24 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', handleScroll);
 
   updateLanguage();
-  updateToggles();  // Initial update for toggles
+  updateToggles();
 });
-// JS updates: Start unmuted by default, adjust initial button text
 
-// YouTube Player variables
 let player;
 let isPlaying = false;
-let isMuted = false; // Start unmuted
+let isMuted = false;
 
-// Predefined YouTube video URL (replace with your desired link)
-// For production, you could extract from a hidden input: const videoUrl = document.getElementById('hidden-yt-input').value;
-const videoUrl = 'https://www.youtube.com/watch?v=Ld37nwZz1RQ&list=RDLd37nwZz1RQ&start_radio=1'; // Test video (Rick Astley)
-const videoId = videoUrl.split('v=')[1].split('&')[0]; // Extract video ID
+const videoUrl = 'https://www.youtube.com/watch?v=Ld37nwZz1RQ&list=RDLd37nwZz1RQ&start_radio=1';
+const videoId = videoUrl.split('v=')[1].split('&')[0];
 
-function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 600;
-}
-
-// Function to initialize YouTube Player (called by the API script)
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('yt-player', {
-    height: '0', // Hidden
-    width: '0',  // Hidden
+    height: '0',
+    width: '0',
     videoId: videoId,
     playerVars: {
-      'autoplay': 0, // No initial autoplay
-      'controls': 0, // No controls visible
+      'autoplay': 0,
+      'controls': 0,
       'modestbranding': 1,
       'rel': 0,
       'showinfo': 0
@@ -827,26 +810,21 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-// When player is ready, get title and set initial state
 function onPlayerReady(event) {
-  // Get video title
   const title = player.getVideoData().title || 'Unknown';
   const titleElement = document.querySelector('.player-title');
   titleElement.textContent = title;
   
-  // Check if title overflows and apply scrolling if needed
-  setTimeout(() => { // Wait for rendering
+  setTimeout(() => {
     if (titleElement.scrollWidth > titleElement.clientWidth) {
-      titleElement.innerHTML = `<span>${title}     ${title}</span>`;
+      titleElement.innerHTML = `<span>${title}       ${title}</span>`;
       titleElement.classList.add('scrolling');
     }
   }, 0);
   
-  // No initial mute since play requires user interaction
-  document.getElementById('mute-btn').textContent = '🔇 Mute'; // Shows to mute
+  document.getElementById('mute-btn').textContent = '🔇 Mute';
 }
 
-// Handle state changes (e.g., for play/pause button updates)
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) {
     isPlaying = true;
@@ -857,17 +835,15 @@ function onPlayerStateChange(event) {
   }
 }
 
-// Play/Pause button handler
 document.getElementById('play-pause-btn').addEventListener('click', () => {
   if (isPlaying) {
     player.pauseVideo();
   } else {
-    player.playVideo(); // Autoplays on click
+    player.playVideo();
   }
-  playClick(); // Integrate with existing sound effect if desired
+  playClick();
 });
 
-// Mute/Unmute button handler
 document.getElementById('mute-btn').addEventListener('click', () => {
   if (isMuted) {
     player.unMute();
@@ -878,5 +854,5 @@ document.getElementById('mute-btn').addEventListener('click', () => {
     isMuted = true;
     document.getElementById('mute-btn').textContent = '🔊 Unmute';
   }
-  playClick(); // Integrate with existing sound effect if desired
+  playClick();
 });

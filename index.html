@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -84,9 +83,8 @@
     </div>
   </section>
 
-  <!-- NUEVA SECCIÓN: MIS PROYECTOS -->
   <section id="my-projects" style="--section-index: 3;" aria-labelledby="my-projects-title">
-    <h2 id="my-projects-title" onclick="toggleSection('my-projects')" onmouseover="playKey()" role="button" aria-expanded="false" aria-controls="my-projects-content" tabindex="0">MIS PROYECTOS</h2>
+    <h2 id="my-projects-title" onclick="toggleSection('my-projects')" onmouseover="playKey()" data-lang-key="my_projects_title" role="button" aria-expanded="false" aria-controls="my-projects-content" tabindex="0">MIS PROYECTOS</h2>
     <div class="proyectos" id="my-projects-content">
       <div class="proyecto" data-popup-id="manageyourlife" onclick="openPopup('manageyourlife')" onmouseover="playGlitch()" role="button" tabindex="0">
         <h3>ManageYourLife (Android)</h3>
@@ -95,22 +93,7 @@
     </div>
   </section>
 
-  <!-- Sección de proyectos “genérica” que ya tenías -->
-  <section id="projects" style="--section-index: 4;" aria-labelledby="projects-title">
-    <h2 id="projects-title" onclick="toggleSection('projects')" onmouseover="playKey()" data-lang-key="projects_title" role="button" aria-expanded="false" aria-controls="projects-content" tabindex="0">PROYECTOS</h2>
-    <div class="proyectos" id="projects-content">
-      <div class="proyecto" data-popup-id="project1" onclick="openPopup('project1')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3 data-lang-key="project_title1">Proyecto 1: Juego de Aventuras</h3>
-        <p data-lang-key="project_desc1">Desarrollo de un juego de aventuras en Unity con elementos de puzzle y narrativa inmersiva.</p>
-      </div>
-      <div class="proyecto" data-popup-id="project2" onclick="openPopup('project2')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3 data-lang-key="project_title2">Proyecto 2: Aplicación Web</h3>
-        <p data-lang-key="project_desc2">Aplicación web para gestión de tareas utilizando React y Node.js.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" style="--section-index: 5;" aria-labelledby="contact-title">
+  <section id="contact" style="--section-index: 4;" aria-labelledby="contact-title">
     <h2 id="contact-title" onclick="toggleSection('contact')" onmouseover="playKey" data-lang-key="contact_title" role="button" aria-expanded="false" aria-controls="contact-content" tabindex="0">CONTACTO</h2>
     <div class="contacto" id="contact-content">
       <div class="contacto-item" data-popup-id="email" onclick="openPopup('email')" onmouseover="playGlitch()" role="button" tabindex="0">
@@ -156,6 +139,12 @@
     <button class="lang-toggle" id="langToggle" onclick="handleToggleLanguage()">IDIOMA: ES</button>
     <button class="theme-toggle" id="themeToggle" onclick="handleToggleTheme()">TEMA: VERDE</button>
     <a class="resume-button" id="resumeButton" data-lang-key="resume_button" download>DESCARGAR CV</a>
+  </div>
+
+  <!-- Mobile Bottom Bar -->
+  <div class="mobile-bottom-bar" id="mobileBottomBar">
+    <button class="lang-toggle-mobile" id="langToggleMobile" onclick="handleToggleLanguage()"></button>
+    <a class="resume-button-mobile" id="resumeButtonMobile" data-lang-key="resume_button" download></a>
   </div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
