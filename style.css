@@ -528,6 +528,12 @@ body.popup-open {
   margin-right: 5px;
   transition: background 0.2s ease, box-shadow 0.2s ease;
 }
+/* Ocultar terminal y reproductor de audio en dispositivos móviles */
+@media (max-width: 600px) {
+  .terminal, #audio-player {
+    display: none !important;
+  }
+}
 
 #audio-player button:hover {
   background: var(--highlight-hover);

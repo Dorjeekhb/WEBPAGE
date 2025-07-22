@@ -660,13 +660,31 @@ function handleToggleTheme() {
 
 // Initialization
 window.addEventListener('DOMContentLoaded', () => {
+  // Detectar si es un dispositivo móvil
+  const isMobile = window.innerWidth <= 600;
+
+  // Referencias a los elementos del terminal y el reproductor de audio
+  const terminal = document.getElementById('terminal');
+  const audioPlayer = document.getElementById('audio-player');
+
+  // Ocultar terminal y reproductor de audio en dispositivos móviles
+  if (isMobile) {
+    if (terminal) terminal.style.display = 'none';
+    if (audioPlayer) audioPlayer.style.display = 'none';
+  } else {
+    // Mostrar terminal y reproductor en escritorio
+    if (terminal) terminal.style.display = 'block';
+    if (audioPlayer) audioPlayer.style.display = 'block';
+  }
+
+  // Resto del código existente...
   window.speechSynthesis.onvoiceschanged = () => {
     window.speechSynthesis.getVoices();
   };
 
   const bg = document.getElementById('bg-music');
   bg.volume = 0.3;
-  if (soundEnabled) {
+  if (soundEnabled && !isMobile) { // Solo reproducir audio en escritorio
     loadAudio('bg-music');
     bg.play().catch(() => {
       document.body.addEventListener('click', () => {
@@ -678,14 +696,14 @@ window.addEventListener('DOMContentLoaded', () => {
   playBoot();
 
   const intro = document.getElementById('intro');
-  const terminal = document.getElementById('terminal');
   setTimeout(() => {
     intro.style.display = 'none';
-    terminal.style.display = 'block';
+    if (!isMobile) { // Mostrar terminal solo en escritorio
+      terminal.style.display = 'block';
+    }
     document.getElementById('terminalInput').focus();
     document.getElementById('home').classList.add('active');
   }, 5000);
-
   const terminalInput = document.getElementById('terminalInput');
   const terminalOutput = document.getElementById('terminalOutput');
 
@@ -784,6 +802,10 @@ let isMuted = false; // Start unmuted
 // For production, you could extract from a hidden input: const videoUrl = document.getElementById('hidden-yt-input').value;
 const videoUrl = 'https://www.youtube.com/watch?v=Ld37nwZz1RQ&list=RDLd37nwZz1RQ&start_radio=1'; // Test video (Rick Astley)
 const videoId = videoUrl.split('v=')[1].split('&')[0]; // Extract video ID
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 600;
+}
 
 // Function to initialize YouTube Player (called by the API script)
 function onYouTubeIframeAPIReady() {

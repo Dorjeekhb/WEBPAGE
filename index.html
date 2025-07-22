@@ -9,7 +9,7 @@
   <meta property="og:title" content="Dorjee's Pip-Boy Portfolio" />
   <meta property="og:description" content="Explore Dorjee's projects, skills, and cyberpunk-inspired creations." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://dorjee-portfolio.example.com/og-image.jpg" />
+  <meta property="og:image" content="og-image.jpg" />
   <meta property="og:site_name" content="Dorjee's Portfolio" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>PIPBOY PORTFOLIO - DORJEE</title>
@@ -17,31 +17,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+  <!-- Pantalla de arranque -->
   <div class="pantalla-inicial" id="intro">
     <span data-lang-key="booting">>> BOOTING WOPR...</span>
   </div>
-  <!-- HTML remains the same as before -->
-<div id="audio-player">
-  <div class="player-title">Loading...</div>
-  <button id="play-pause-btn">▶ Play</button>
-  <button id="mute-btn">🔇 Mute</button>
-</div>
 
-<!-- Hidden div for the YouTube iframe (will be invisible) -->
-<div id="yt-player" style="display: none;"></div>
+  <!-- Player YouTube -->
+  <div id="audio-player">
+    <div class="player-title">Loading...</div>
+    <button id="play-pause-btn">▶ Play</button>
+    <button id="mute-btn">🔇 Mute</button>
+  </div>
+  <div id="yt-player" style="display:none;"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
 
-<!-- Include the YouTube Iframe API script (required for JS control) -->
-<script src="https://www.youtube.com/iframe_api"></script>
-
+  <!-- Popup global -->
   <div class="popup-overlay" id="popupOverlay" role="presentation"></div>
   <div class="popup" id="popup" role="dialog" aria-labelledby="popupTitle" aria-modal="true">
     <button class="popup-close" onclick="closePopup()" aria-label="Close popup">X</button>
     <h3 id="popupTitle"></h3>
     <p id="popupDescription"></p>
+    <div id="popupImages" class="popup-images"></div>
     <p id="popupLink"></p>
   </div>
 
+  <!-- Audios -->
   <audio id="bg-music" data-src="https://cdn.pixabay.com/audio/2023/10/29/14-16-19-672_200x200.mp3" preload="none" loop></audio>
   <audio id="click-sound" data-src="https://cdn.pixabay.com/audio/2022/05/13/16-35-43-54_200x200.mp3" preload="none"></audio>
   <audio id="key-sound" data-src="https://cdn.pixabay.com/audio/2022/08/02/00-15-02-598_200x200.mp3" preload="none"></audio>
@@ -57,7 +57,9 @@
   <section id="about" style="--section-index: 1;" aria-labelledby="about-title">
     <h2 id="about-title" onclick="toggleSection('about')" onmouseover="playKey()" data-lang-key="about_title" role="button" aria-expanded="false" aria-controls="about-content" tabindex="0">SOBRE MÍ</h2>
     <div class="about-content" id="about-content">
-      <p data-popup-id="about" onmouseover="playKey()" data-lang-key="about_content" role="button" tabindex="0">Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.</p>
+      <p data-popup-id="about" onmouseover="playKey()" data-lang-key="about_content" role="button" tabindex="0">
+        Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.
+      </p>
     </div>
   </section>
 
@@ -82,20 +84,18 @@
     </div>
   </section>
 
-  <section id="skills" style="--section-index: 3;" aria-labelledby="skills-title">
-    <h2 id="skills-title" onclick="toggleSection('skills')" onmouseover="playKey()" data-lang-key="skills_title" role="button" aria-expanded="false" aria-controls="skills-content" tabindex="0">HABILIDADES</h2>
-    <div class="habilidades" id="skills-content">
-      <div class="habilidad" data-popup-id="programming" onclick="openPopup('programming')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3 data-lang-key="programming_title">>> PROGRAMACIÓN</h3>
-        <p data-lang-key="programming_content">C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS</p>
-      </div>
-      <div class="habilidad" data-popup-id="tools" onclick="openPopup('tools')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3 data-lang-key="tools_title">>> HERRAMIENTAS</h3>
-        <p data-lang-key="tools_content">Git, Docker, Linux, NAS</p>
+  <!-- NUEVA SECCIÓN: MIS PROYECTOS -->
+  <section id="my-projects" style="--section-index: 3;" aria-labelledby="my-projects-title">
+    <h2 id="my-projects-title" onclick="toggleSection('my-projects')" onmouseover="playKey()" role="button" aria-expanded="false" aria-controls="my-projects-content" tabindex="0">MIS PROYECTOS</h2>
+    <div class="proyectos" id="my-projects-content">
+      <div class="proyecto" data-popup-id="manageyourlife" onclick="openPopup('manageyourlife')" onmouseover="playGlitch()" role="button" tabindex="0">
+        <h3>ManageYourLife (Android)</h3>
+        <p>App básica de gestión de tareas con etiquetas, prioridades y búsqueda por fecha.</p>
       </div>
     </div>
   </section>
 
+  <!-- Sección de proyectos “genérica” que ya tenías -->
   <section id="projects" style="--section-index: 4;" aria-labelledby="projects-title">
     <h2 id="projects-title" onclick="toggleSection('projects')" onmouseover="playKey()" data-lang-key="projects_title" role="button" aria-expanded="false" aria-controls="projects-content" tabindex="0">PROYECTOS</h2>
     <div class="proyectos" id="projects-content">
@@ -111,26 +111,22 @@
   </section>
 
   <section id="contact" style="--section-index: 5;" aria-labelledby="contact-title">
-    <h2 id="contact-title" onclick="toggleSection('contact')" onmouseover="playKey()" data-lang-key="contact_title" role="button" aria-expanded="false" aria-controls="contact-content" tabindex="0">CONTACTO</h2>
+    <h2 id="contact-title" onclick="toggleSection('contact')" onmouseover="playKey" data-lang-key="contact_title" role="button" aria-expanded="false" aria-controls="contact-content" tabindex="0">CONTACTO</h2>
     <div class="contacto" id="contact-content">
       <div class="contacto-item" data-popup-id="email" onclick="openPopup('email')" onmouseover="playGlitch()" role="button" tabindex="0">
         <h3 data-lang-key="email_title">>> EMAIL</h3>
         <p>
-          <span class="contact-icon" onclick="openPopup('email')" onmouseover="playGlitch()" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33">
-              <path d="M2 2h12v2l-6 4-6-4V2zm0 2v10h12V4l-6 4-6-4z"/>
-            </svg>
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33"><path d="M2 2h12v2l-6 4-6-4V2zm0 2v10h12V4l-6 4-6-4z"/></svg>
           </span>
-          <a href="/cdn-cgi/l/email-protection#8aeee5f8e0efefeeeffccafaf8e5fee5e4a4e7ef" data-lang-key="email_content"><span class="__cf_email__" data-cfemail="a2868d90888787868794a292908d968d8ccc8f87">[email protected]</span></a>
+          <a href="mailto:dorjeedev@proton.me" data-lang-key="email_content">dorjeedev@proton.me</a>
         </p>
       </div>
       <div class="contacto-item" data-popup-id="github" onclick="openPopup('github')" onmouseover="playGlitch()" role="button" tabindex="0">
         <h3 data-lang-key="github_title">>> GITHUB</h3>
         <p>
-          <span class="contact-icon" onclick="openPopup('github')" onmouseover="playGlitch()" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           </span>
           <a href="https://github.com/Dorjeekhb" target="_blank" data-lang-key="github_content">github.com/Dorjeekhb</a>
         </p>
@@ -138,10 +134,8 @@
       <div class="contacto-item" data-popup-id="linkedin" onclick="openPopup('linkedin')" onmouseover="playGlitch()" role="button" tabindex="0">
         <h3 data-lang-key="linkedin_title">>> LINKEDIN</h3>
         <p>
-          <span class="contact-icon" onclick="openPopup('linkedin')" onmouseover="playGlitch()" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33">
-              <path d="M0 1.5C0 .67.67 0 1.5 0h13c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5h-13A1.5 1.5 0 010 14.5v-13zM3 4a1 1 0 100-2 1 1 0 000 2zm0 1.5v7h2v-7H3zm4 0v7h2v-3.5c0-1 .5-2 1.5-2s1.5 1 1.5 2V12h2v-3.5c0-2.5-1.5-3.5-3.5-3.5H7z"/>
-            </svg>
+          <span class="contact-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33"><path d="M0 1.5C0 .67.67 0 1.5 0h13c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5h-13A1.5 1.5 0 010 14.5v-13zM3 4a1 1 0 100-2 1 1 0 000 2zm0 1.5v7h2v-7H3zm4 0v7h2v-3.5c0-1 .5-2 1.5-2s1.5 1 1.5 2V12h2v-3.5c0-2.5-1.5-3.5-3.5-3.5H7z"/></svg>
           </span>
           <a href="https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/" target="_blank" data-lang-key="linkedin_content">linkedin.com/in/dorje-khampa-herrezuelo-blasco</a>
         </p>
@@ -151,6 +145,7 @@
 
   <footer onclick="playClick()" onmouseover="playNavHover()" data-lang-key="footer">© 2025 Dorjee // root@pipboy</footer>
 
+  <!-- Terminal -->
   <div class="terminal" id="terminal" role="region" aria-label="Terminal" aria-live="polite">
     <div class="terminal-output" id="terminalOutput"></div>
     <div class="terminal-input-container">
@@ -160,7 +155,7 @@
     <button class="sound-toggle" id="soundToggle" onclick="handleToggleSound()">SONIDO: ON</button>
     <button class="lang-toggle" id="langToggle" onclick="handleToggleLanguage()">IDIOMA: ES</button>
     <button class="theme-toggle" id="themeToggle" onclick="handleToggleTheme()">TEMA: VERDE</button>
-    <a class="resume-button" id="resumeButton" data-lang-key="resume_button" download></a>
+    <a class="resume-button" id="resumeButton" data-lang-key="resume_button" download>DESCARGAR CV</a>
   </div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
