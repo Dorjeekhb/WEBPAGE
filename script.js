@@ -245,12 +245,12 @@ help             Display this help message`,
         title: "WhatToWatch (watchOS)",
         description: "A watchOS app that recommends daily series or movies, providing a synopsis, duration, and streaming platform. Built with Swift, it offers a seamless experience on Apple Watch.",
         link: "https://github.com/Dorjeekhb/whattowatch",
-        images: [
-          "images/wtw3.png",
-          "images/wtw2.png",
-          "images/wtw1.png",
-          "images/wtw4.png"
-        ]
+         images: [
+      "images/5.png",
+      "images/4.png",
+      "images/6.png",
+      "images/7.png"
+    ]
       }
     },
     popup_link: "Go to link",
