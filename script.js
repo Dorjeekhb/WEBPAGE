@@ -11,8 +11,8 @@ let lastScrollTop = 0;
 const langData = {
   es: {
     booting: ">> BOOTING WOPR...",
-    header_title: "PORTAFOLIO DE DORJEE",
-    header_subtitle: "Desarrollador. Explorador digital. Buscador de bugs.",
+    header_title: "DORJEE",
+    header_subtitle: "Desarrollador. La única manera de ganar es no jugar.",
     about_title: "SOBRE MÍ",
     about_content: "Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.",
     education_title: "EDUCACIÓN",
@@ -246,8 +246,10 @@ help             Display this help message`,
         description: "A watchOS app that recommends daily series or movies, providing a synopsis, duration, and streaming platform. Built with Swift, it offers a seamless experience on Apple Watch.",
         link: "https://github.com/Dorjeekhb/whattowatch",
         images: [
-          "images/whattowatch1.png",
-          "images/whattowatch2.png"
+          "images/wtw3.png",
+          "images/wtw2.png",
+          "images/wtw1.png",
+          "images/wtw4.png"
         ]
       }
     },
