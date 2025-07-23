@@ -11,8 +11,8 @@ let lastScrollTop = 0;
 const langData = {
   es: {
     booting: ">> BOOTING WOPR...",
-    header_title: "DORJEE",
-    header_subtitle: "Desarrollador. La única forma de ganar es no jugar",
+    header_title: "PORTAFOLIO DE DORJEE",
+    header_subtitle: "Desarrollador. Explorador digital. Buscador de bugs.",
     about_title: "SOBRE MÍ",
     about_content: "Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.",
     education_title: "EDUCACIÓN",
@@ -26,6 +26,8 @@ const langData = {
     education_institution3: "Universidad Complutense de Madrid (UCM)",
     education_years3: "2016 - 2020",
     my_projects_title: "MIS PROYECTOS",
+    manageyourlife_description: "App básica de gestión de tareas con etiquetas, prioridades y búsqueda por fecha.",
+    whattowatch_description: "App para watchOS que recomienda series o películas diarias, con sinopsis, duración y plataforma de streaming.",
     skills_title: "HABILIDADES",
     programming_title: ">> PROGRAMACIÓN",
     programming_content: "C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS",
@@ -54,6 +56,7 @@ const langData = {
       open_tools: ">> Comando ejecutado: Abriendo HERRAMIENTAS",
       open_about: ">> Comando ejecutado: Abriendo SOBRE MÍ",
       open_manageyourlife: ">> Comando ejecutado: Abriendo MANAGEYOURLIFE",
+      open_whattowatch: ">> Comando ejecutado: Abriendo WHATTOWATCH",
       toggle_sound: ">> Comando ejecutado: Alternando sonido",
       toggle_language: ">> Comando ejecutado: Alternando idioma",
       toggle_theme: ">> Comando ejecutado: Alternando tema",
@@ -62,7 +65,7 @@ const langData = {
       error: ">> ERROR: COMANDO NO ENCONTRADO"
     },
     help_content: `ir a <sección>   Navegar a una sección (home, about, education, my-projects, contact)
-abrir <item>     Abrir un popup (email, github, linkedin, programming, tools, about, manageyourlife)
+abrir <item>     Abrir un popup (email, github, linkedin, programming, tools, about, manageyourlife, whattowatch)
 alternar sonido  Activar/desactivar el sonido
 alternar idioma  Cambiar idioma entre español e inglés
 alternar tema    Cambiar tema entre verde, ámbar y azul
@@ -108,6 +111,15 @@ ayuda            Mostrar este mensaje de ayuda`,
           "images/3.png",
           "images/1.png"
         ]
+      },
+      whattowatch: {
+        title: "WhatToWatch (watchOS)",
+        description: "Una aplicación para watchOS que recomienda series o películas diarias, proporcionando una sinopsis, la duración y la plataforma de streaming disponible. Desarrollada con Swift, ofrece una experiencia fluida en Apple Watch.",
+        link: "https://github.com/Dorjeekhb/whattowatch",
+        images: [
+          "images/whattowatch1.png",
+          "images/whattowatch2.png"
+        ]
       }
     },
     popup_link: "Ir al enlace",
@@ -143,6 +155,8 @@ ayuda            Mostrar este mensaje de ayuda`,
     education_institution3: "Complutense University of Madrid (UCM)",
     education_years3: "2016 - 2020",
     my_projects_title: "My Projects",
+    manageyourlife_description: "Basic task management app with tags, priorities, and date-based search.",
+    whattowatch_description: "A watchOS app that recommends daily series or movies, providing a synopsis, duration, and streaming platform.",
     skills_title: "Skills",
     programming_title: ">> Programming",
     programming_content: "C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS",
@@ -171,6 +185,7 @@ ayuda            Mostrar este mensaje de ayuda`,
       open_tools: ">> Command executed: Opening Tools",
       open_about: ">> Command executed: Opening About",
       open_manageyourlife: ">> Command executed: Opening MANAGEYOURLIFE",
+      open_whattowatch: ">> Comando ejecutado: Abriendo WHATTOWATCH",
       toggle_sound: ">> Command executed: Toggling sound",
       toggle_language: ">> Command executed: Toggling language",
       toggle_theme: ">> Command executed: Toggling theme",
@@ -179,7 +194,7 @@ ayuda            Mostrar este mensaje de ayuda`,
       error: ">> ERROR: COMMAND NOT FOUND"
     },
     help_content: `goto <section>   Navigate to a section (home, about, education, my-projects, contact)
-open <item>      Open a popup (email, github, linkedin, programming, tools, about, manageyourlife)
+open <item>      Open a popup (email, github, linkedin, programming, tools, about, manageyourlife, whattowatch)
 toggle sound     Toggle sound on/off
 toggle language  Toggle language between English and Spanish
 toggle theme     Toggle theme between green, amber, and blue
@@ -217,15 +232,24 @@ help             Display this help message`,
         link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/"
       },
       manageyourlife: {
-  title: "ManageYourLife (Android)",
-  description: "Una aplicación Android para la gestión de tareas con etiquetas, prioridades y búsqueda por fecha. Diseñada con Android Studio, ofrece una interfaz intuitiva para organizar tareas diarias.",
-  link: "https://github.com/Dorjeekhb/manageyourlife",
-  images: [
-    "images/1.png",
-    "images/2.png",
-    "images/3.png"
-  ]
-}
+        title: "ManageYourLife (Android)",
+        description: "An Android app for task management with tags, priorities, and date-based search. Built with Android Studio, it offers an intuitive interface for organizing daily tasks.",
+        link: "https://github.com/Dorjeekhb/manageyourlife",
+        images: [
+          "images/1.png",
+          "images/2.png",
+          "images/3.png"
+        ]
+      },
+      whattowatch: {
+        title: "WhatToWatch (watchOS)",
+        description: "A watchOS app that recommends daily series or movies, providing a synopsis, duration, and streaming platform. Built with Swift, it offers a seamless experience on Apple Watch.",
+        link: "https://github.com/Dorjeekhb/whattowatch",
+        images: [
+          "images/whattowatch1.png",
+          "images/whattowatch2.png"
+        ]
+      }
     },
     popup_link: "Go to link",
     sound_label: "SOUND",
@@ -331,7 +355,6 @@ function updateLanguage() {
   document.documentElement.lang = currentLang;
   updateTerminalPlaceholder();
   updateResumeLink();
-  updateToggles();
 }
 
 function updateTerminalPlaceholder() {
@@ -492,7 +515,7 @@ function handleCommand(command) {
   const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
   const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
   const sections = ['home', 'about', 'education', 'my-projects', 'contact'];
-  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife'];
+  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife', 'whattowatch'];
 
   if (command === helpCommand) {
     responseText = langData[currentLang].terminal_response.help;
@@ -564,7 +587,7 @@ function autocompleteCommand(input) {
   const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
   const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
   const sections = ['home', 'about', 'education', 'my-projects', 'contact'];
-  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife'];
+  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife', 'whattowatch'];
   const toggleCommands = currentLang === 'es' ? ['sonido', 'idioma', 'tema'] : ['sound', 'language', 'theme'];
 
   const lowerInput = input.toLowerCase().trim();
