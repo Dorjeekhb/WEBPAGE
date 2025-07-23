@@ -57,6 +57,7 @@ const langData = {
       open_about: ">> Comando ejecutado: Abriendo SOBRE MÍ",
       open_manageyourlife: ">> Comando ejecutado: Abriendo MANAGEYOURLIFE",
       open_whattowatch: ">> Comando ejecutado: Abriendo WHATTOWATCH",
+      open_bubbleadventure: ">> Comando ejecutado: Abriendo BUBBLEADVENTURE",
       toggle_sound: ">> Comando ejecutado: Alternando sonido",
       toggle_language: ">> Comando ejecutado: Alternando idioma",
       toggle_theme: ">> Comando ejecutado: Alternando tema",
@@ -65,7 +66,7 @@ const langData = {
       error: ">> ERROR: COMANDO NO ENCONTRADO"
     },
     help_content: `ir a <sección>   Navegar a una sección (home, about, education, my-projects, contact)
-abrir <item>     Abrir un popup (email, github, linkedin, programming, tools, about, manageyourlife, whattowatch)
+abrir <item>     Abrir un popup (email, github, linkedin, programming, tools, about, manageyourlife, whattowatch, bubbleadventure)
 alternar sonido  Activar/desactivar el sonido
 alternar idioma  Cambiar idioma entre español e inglés
 alternar tema    Cambiar tema entre verde, ámbar y azul
@@ -117,9 +118,23 @@ ayuda            Mostrar este mensaje de ayuda`,
         description: "Una aplicación para watchOS que recomienda series o películas diarias, proporcionando una sinopsis, la duración y la plataforma de streaming disponible. Desarrollada con Swift, ofrece una experiencia fluida en Apple Watch.",
         link: "https://github.com/Dorjeekhb/whattowatch",
         images: [
-          "images/whattowatch1.png",
-          "images/whattowatch2.png"
+          "images/4.png",
+          "images/5.png",
+          "images/6.png",
+          "images/7.png"
         ]
+      },
+      bubbleadventure: {
+        title: "Bubble Adventure (Android)",
+        description: "Juego tipo Puzzle Bobble desarrollado en Android Studio. Dispara burbujas, combina colores y completa niveles con efectos animados.",
+        images: [
+          "images/pb1.png",
+          "images/pb2.png",
+          "images/pb3.png",
+          "images/pb4.png",
+          "images/pb5.png"
+        ],
+        link: "https://github.com/Dorjeekhb/BubbleAdventure"
       }
     },
     popup_link: "Ir al enlace",
@@ -185,7 +200,8 @@ ayuda            Mostrar este mensaje de ayuda`,
       open_tools: ">> Command executed: Opening Tools",
       open_about: ">> Command executed: Opening About",
       open_manageyourlife: ">> Command executed: Opening MANAGEYOURLIFE",
-      open_whattowatch: ">> Comando ejecutado: Abriendo WHATTOWATCH",
+      open_whattowatch: ">> Command executed: Opening WHATTOWATCH",
+      open_bubbleadventure: ">> Command executed: Opening BUBBLEADVENTURE",
       toggle_sound: ">> Command executed: Toggling sound",
       toggle_language: ">> Command executed: Toggling language",
       toggle_theme: ">> Command executed: Toggling theme",
@@ -194,7 +210,7 @@ ayuda            Mostrar este mensaje de ayuda`,
       error: ">> ERROR: COMMAND NOT FOUND"
     },
     help_content: `goto <section>   Navigate to a section (home, about, education, my-projects, contact)
-open <item>      Open a popup (email, github, linkedin, programming, tools, about, manageyourlife, whattowatch)
+open <item>      Open a popup (email, github, linkedin, programming, tools, about, manageyourlife, whattowatch, bubbleadventure)
 toggle sound     Toggle sound on/off
 toggle language  Toggle language between English and Spanish
 toggle theme     Toggle theme between green, amber, and blue
@@ -245,12 +261,24 @@ help             Display this help message`,
         title: "WhatToWatch (watchOS)",
         description: "A watchOS app that recommends daily series or movies, providing a synopsis, duration, and streaming platform. Built with Swift, it offers a seamless experience on Apple Watch.",
         link: "https://github.com/Dorjeekhb/whattowatch",
-         images: [
-      "images/5.png",
-      "images/4.png",
-      "images/6.png",
-      "images/7.png"
-    ]
+        images: [
+          "images/5.png",
+          "images/4.png",
+          "images/6.png",
+          "images/7.png"
+        ]
+      },
+      bubbleadventure: {
+        title: "Bubble Adventure (Android)",
+        description: "Juego tipo Puzzle Bobble desarrollado en Android Studio. Dispara burbujas, combina colores y completa niveles con efectos animados.",
+        images: [
+          "images/pb1.png",
+          "images/pb2.png",
+          "images/pb3.png",
+          "images/pb4.png",
+          "images/pb5.png"
+        ],
+        link: "https://github.com/Dorjeekhb/PuzzleBobble"
       }
     },
     popup_link: "Go to link",
@@ -517,7 +545,7 @@ function handleCommand(command) {
   const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
   const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
   const sections = ['home', 'about', 'education', 'my-projects', 'contact'];
-  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife', 'whattowatch'];
+  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife', 'whattowatch', 'bubbleadventure'];
 
   if (command === helpCommand) {
     responseText = langData[currentLang].terminal_response.help;
@@ -589,7 +617,7 @@ function autocompleteCommand(input) {
   const clearCommand = currentLang === 'es' ? 'limpiar' : 'clear';
   const helpCommand = currentLang === 'es' ? 'ayuda' : 'help';
   const sections = ['home', 'about', 'education', 'my-projects', 'contact'];
-  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife', 'whattowatch'];
+  const popupItems = ['email', 'github', 'linkedin', 'programming', 'tools', 'about', 'manageyourlife', 'whattowatch', 'bubbleadventure'];
   const toggleCommands = currentLang === 'es' ? ['sonido', 'idioma', 'tema'] : ['sound', 'language', 'theme'];
 
   const lowerInput = input.toLowerCase().trim();
