@@ -121,7 +121,10 @@ ayuda            Mostrar este mensaje de ayuda`,
           "images/4.png",
           "images/5.png",
           "images/6.png",
-          "images/7.png"
+          "images/7.png",
+          "images/12.png",
+          "images/22.png",
+          "images/32.png"
         ]
       },
       bubbleadventure: {
