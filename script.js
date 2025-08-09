@@ -39,7 +39,7 @@ const langData = {
     github_title: ">> GITHUB",
     github_content: "github.com/Dorjeekhb",
     linkedin_title: ">> LINKEDIN",
-    linkedin_content: "linkedin.com/in/dorje-khampa-herrezuelo-blasco-070849379/",
+    linkedin_content: "www.linkedin.com/in/dorje-khampa-herrezuelo-blasco-070849379",
     footer: "© 2025 Dorjee // root@pipboy",
     resume_button: "DESCARGAR CV",
     terminal_placeholder: ">> Escribe un comando (ej., ir a proyectos, abrir email, ayuda)",
@@ -101,7 +101,7 @@ ayuda            Mostrar este mensaje de ayuda`,
       linkedin: {
         title: "LINKEDIN",
         description: "Conecta conmigo en LinkedIn para networking profesional y actualizaciones sobre mi carrera.",
-        link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/"
+        link: "www.linkedin.com/in/dorje-khampa-herrezuelo-blasco-070849379"
       },
       manageyourlife: {
         title: "ManageYourLife (Android)",
