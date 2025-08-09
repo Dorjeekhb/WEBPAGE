@@ -30,16 +30,16 @@ const langData = {
     whattowatch_description: "App para watchOS que recomienda series o películas diarias, con sinopsis, duración y plataforma de streaming.",
     skills_title: "HABILIDADES",
     programming_title: ">> PROGRAMACIÓN",
-    programming_content: "C++, C#, Python, Java, Android Studio, Unity, SDL, JavaScript, HTML, CSS",
+    programming_content: "C++, C#, C, Python, Java, SDL, JavaScript, HTML, CSS",
     tools_title: ">> HERRAMIENTAS",
     tools_content: "Git, Docker, Linux, NAS",
     contact_title: "CONTACTO",
     email_title: ">> EMAIL",
-    email_content: "dorjeedev@proton.me",
+    email_content: "dorjeekhampa97@gmail.com",
     github_title: ">> GITHUB",
     github_content: "github.com/Dorjeekhb",
     linkedin_title: ">> LINKEDIN",
-    linkedin_content: "linkedin.com/in/dorje-khampa-herrezuelo-blasco",
+    linkedin_content: "linkedin.com/in/dorje-khampa-herrezuelo-blasco-070849379/",
     footer: "© 2025 Dorjee // root@pipboy",
     resume_button: "DESCARGAR CV",
     terminal_placeholder: ">> Escribe un comando (ej., ir a proyectos, abrir email, ayuda)",
@@ -91,7 +91,7 @@ ayuda            Mostrar este mensaje de ayuda`,
       email: {
         title: "EMAIL",
         description: "Contáctame directamente para colaboraciones, proyectos o consultas técnicas.",
-        link: "mailto:dorjeedev@proton.me"
+        link: "mailto:dorjeekhampa97@gmail.com"
       },
       github: {
         title: "GITHUB",
@@ -248,7 +248,7 @@ help             Display this help message`,
       linkedin: {
         title: "LinkedIn",
         description: "Connect with me on LinkedIn for professional networking and career updates.",
-        link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/"
+        link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco-070849379/"
       },
       manageyourlife: {
         title: "ManageYourLife (Android)",
