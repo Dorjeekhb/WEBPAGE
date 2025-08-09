@@ -248,7 +248,7 @@ help             Display this help message`,
       linkedin: {
         title: "LinkedIn",
         description: "Connect with me on LinkedIn for professional networking and career updates.",
-        link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco-070849379/"
+        link: "https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco-070849379"
       },
       manageyourlife: {
         title: "ManageYourLife (Android)",
