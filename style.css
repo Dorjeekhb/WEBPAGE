@@ -891,3 +891,57 @@ body {
         width: 0;
     }
 }
+
+
+/* Versión súper compacta para móvil */
+@media (max-width: 600px) {
+
+    /* Contenedor más estrecho y compacto */
+    .skills-container {
+        padding: 0.5rem 1rem;
+        gap: 1rem;
+    }
+
+    .skill-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Tarjetas más pequeñas y compactas */
+    .skill-card {
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        gap: 0.5rem;
+        transform: translateY(0);  
+    }
+
+    .skill-card::before {
+        height: 1px;                   
+    }
+
+    /* Títulos y textos más pequeñitos */
+    .skill-card h3 {
+        font-size: 0.95rem;
+    }
+
+    /* Logos e iconos más pequeños */
+    .skill-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .skill-card i {
+        font-size: 1.8rem;
+        margin-bottom: 0.25rem;
+    }
+
+    /* Barra de nivel más fina */
+    .skill-level-indicator {
+        height: 6px;
+        margin-top: 0.3rem;
+    }
+
+    .level-bar {
+        border-radius: 3px;
+    }
+}
