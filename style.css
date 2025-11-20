@@ -11,6 +11,52 @@
     box-sizing: border-box;
 }
 
+.glitch-header .subtitle {
+    display: block;
+    margin-top: 10px;
+}
+
+.subtitle.tagline {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+
+.glitch-header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;   /* para que el texto y el indicador se apilen */
+    justify-content: center;
+    align-items: center;
+    position: relative;       /* importante para el scroll-indicator */
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    opacity: 0.6;
+    animation: blink 1.5s infinite;
+    cursor: pointer;
+}
+
+
+@keyframes blink { 
+    0%,100% { opacity: 0.2; } 
+    50% { opacity: 1; } 
+}
+
+.level-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff00, #00ff99);
+    border-radius: 4px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+
 body {
     font-family: 'Courier New', monospace;
     background-color: #000;
@@ -30,13 +76,6 @@ body {
     opacity: 0.1;
 }
 
-/* Glitch Header */
-.glitch-header {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .glitch {
     font-size: 5rem;
@@ -294,11 +333,6 @@ body {
 
 .subtitle {
     display: block;
-}
-
-.glitch-header .subtitle {
-    display: block;
-    margin-top: 5px; /*Separacion*/
 }
 
 
@@ -589,13 +623,6 @@ body {
     border-radius: 4px;
     overflow: hidden;
     margin-top: auto;
-}
-
-.level-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #00ff00, #00ff99);
-    border-radius: 4px;
-    transition: width 0.5s ease;
 }
 
 /* Media Queries for Skills Section */
