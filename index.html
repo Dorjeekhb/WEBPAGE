@@ -1,154 +1,321 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dorjee's cyberpunk-inspired portfolio showcasing development projects, skills, and creative works." />
-  <meta name="keywords" content="portfolio, developer, cyberpunk, programming, web development, Dorjee" />
-  <meta property="og:title" content="Dorjee's Pip-Boy Portfolio" />
-  <meta property="og:description" content="Explore Dorjee's projects, skills, and cyberpunk-inspired creations." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="og-image.jpg" />
-  <meta property="og:site_name" content="Dorjee's Portfolio" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <title>DORJEE</title>
-   <link rel="icon" type="image/x-icon" href="images/ico.ico">
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorjee NormonCorp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <!-- Pantalla de arranque -->
-  <div class="pantalla-inicial" id="intro">
-    <span data-lang-key="booting">>> BOOTING WOPR...</span>
-  </div>
+    <div class="matrix-bg"></div>
+    
+   <header class="glitch-header">
+    <h1 class="glitch" data-text="DORJEE">DORJEE</h1>
+    <p class="subtitle">Video Games developer.</p>
+    <p class="subtitle"> Mess with the best, die like the rest.</p>
+</header>
 
 
-  <!-- Popup global -->
-  <div class="popup-overlay" id="popupOverlay" role="presentation"></div>
-  <div class="popup" id="popup" role="dialog" aria-labelledby="popupTitle" aria-modal="true">
-    <button class="popup-close" onclick="closePopup()" aria-label="Close popup">X</button>
-    <h3 id="popupTitle"></h3>
-    <p id="popupDescription"></p>
-    <div id="popupImages" class="popup-images"></div>
-    <p id="popupLink"></p>
-  </div>
+    <nav class="cyberpunk-nav">
+        <ul>
+            <li><a href="#about">./about</a></li>
+            <li><a href="#education">./education</a></li>
+            <li><a href="#skills">./skills</a></li>
+            <li><a href="#projects">./projects</a></li>
+            <li><a href="#contact">./contact</a></li>
+        </ul>
+    </nav>
 
-  <!-- Audios -->
-  <audio id="bg-music" data-src="https://cdn.pixabay.com/audio/2023/10/29/14-16-19-672_200x200.mp3" preload="none" loop></audio>
-  <audio id="click-sound" data-src="https://cdn.pixabay.com/audio/2022/05/13/16-35-43-54_200x200.mp3" preload="none"></audio>
-  <audio id="key-sound" data-src="https://cdn.pixabay.com/audio/2022/08/02/00-15-02-598_200x200.mp3" preload="none"></audio>
-  <audio id="glitch-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-50-43-204_200x200.mp3" preload="none"></audio>
-  <audio id="nav-hover-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-43-24-182_200x200.mp3" preload="none"></audio>
-  <audio id="boot-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-46-47-400_200x200.mp3" preload="auto"></audio>
+    <section id="about" class="section">
+        <div class="terminal">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="terminal-content">
+                <p class="type-text">> Iniciando sistema...</p>
+                <p class="type-text">> Cargando perfil: DORJEE</p>
+                <p class="type-text">> Desarrollador Full Stack con pasión por la tecnología</p>
+                <p class="type-text">> Especializado en desarrollo web y soluciones creativas</p>
+            </div>
+        </div>
+    </section>
 
-  <header id="home" onclick="playClick()" onmouseover="playNavHover()" style="--section-index: 0;" role="banner">
-    <h1 data-lang-key="header_title">PORTAFOLIO DE DORJEE</h1>
-    <p data-lang-key="header_subtitle">Desarrollador. Explorador digital. Buscador de bugs.</p>
-  </header>
+    <section id="education" class="section">
+    <!-- Education section title -->
+    <h2 class="cyber-title">Education</h2>
 
-  <section id="about" style="--section-index: 1;" aria-labelledby="about-title">
-    <h2 id="about-title" onclick="toggleSection('about')" onmouseover="playKey()" data-lang-key="about_title" role="button" aria-expanded="false" aria-controls="about-content" tabindex="0">SOBRE MÍ</h2>
-    <div class="about-content" id="about-content">
-      <p data-popup-id="about" onmouseover="playKey()" data-lang-key="about_content" role="button" tabindex="0">
-        Me apasionan los sistemas, la automatización y los desafíos imposibles. Estudio Desarrollo de Videojuegos en la UCM de Madrid. También estudié Antropología e hice un Máster en Historia y Antropología de América.
-      </p>
+    <div class="terminal">
+        <div class="terminal-header">
+            <!-- Terminal window control dots -->
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+        </div>
+
+        <div class="terminal-content">
+            <div class="education-item">
+                <p>> Bachelor's Degree in Video Game Development</p>
+                <p>> Complutense University of Madrid (UCM)</p>
+                <p>> 2020 - Present</p>
+            </div>
+            <div class="education-item">
+                <p>> Master's Degree in History and Anthropology of America</p>
+                <p>> Complutense University of Madrid (UCM)</p>
+                <p>> 2020 - 2021</p>
+            </div>
+            <div class="education-item">
+                <p>> Bachelor's Degree in Anthropology</p>
+                <p>> Complutense University of Madrid (UCM)</p>
+                <p>> 2016 - 2020</p>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <section id="education" style="--section-index: 2;" aria-labelledby="education-title">
-    <h2 id="education-title" onclick="toggleSection('education')" onmouseover="playKey()" data-lang-key="education_title" role="button" aria-expanded="false" aria-controls="education-content" tabindex="0">EDUCACIÓN</h2>
-    <div class="education-content" id="education-content">
-      <div class="education-item">
-        <h3 data-lang-key="education_degree1">Grado en Desarrollo de Videojuegos</h3>
-        <p data-lang-key="education_institution1">Universidad Complutense de Madrid (UCM)</p>
-        <p data-lang-key="education_years1">2020 - Presente</p>
-      </div>
-      <div class="education-item">
-        <h3 data-lang-key="education_degree2">Máster en Historia y Antropología de América</h3>
-        <p data-lang-key="education_institution2">Universidad Complutense de Madrid (UCM)</p>
-        <p data-lang-key="education_years2">2020 - 2021</p>
-      </div>
-      <div class="education-item">
-        <h3 data-lang-key="education_degree3">Grado en Antropología</h3>
-        <p data-lang-key="education_institution3">Universidad Complutense de Madrid (UCM)</p>
-        <p data-lang-key="education_years3">2016 - 2020</p>
-      </div>
-    </div>
-  </section>
 
-  <section id="my-projects" style="--section-index: 3;" aria-labelledby="my-projects-title">
-    <h2 id="my-projects-title" onclick="toggleSection('my-projects')" onmouseover="playKey()" data-lang-key="my_projects_title" role="button" aria-expanded="false" aria-controls="my-projects-content" tabindex="0">MIS PROYECTOS</h2>
-    <div class="proyectos" id="my-projects-content">
-      <div class="proyecto" data-popup-id="manageyourlife" onclick="openPopup('manageyourlife')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3>ManageYourLife (Android)</h3>
-        <p>App básica de gestión de tareas con etiquetas, prioridades y búsqueda por fecha.</p>
-      </div>
-       <div class="proyecto" data-popup-id="whattowatch" onclick="openPopup('whattowatch')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <p data-lang-key="whattowatch_title">WhatToWatch (watchOS + IOS)</p>
-        <p data-lang-key="whattowatch_description">App para watchOS que recomienda series o películas diarias, con sinopsis, duración y plataforma de streaming.</p>
-      </div>
-      <div class="proyecto" data-popup-id="bubbleadventure" onclick="openPopup('bubbleadventure')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3>Bubble Adventure (Android)</h3>
-        <p>Juego tipo Puzzle Bobble desarrollado en Android Studio. Dispara burbujas, combina colores y completa niveles con efectos animados.</p>
-      </div>
-    </div>
-  </section>
+    <section id="skills" class="section">
+        <h2 class="cyber-title">Skills</h2>
+        <div class="skills-container">
+            <div class="skill-row">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <img src="images/cpp-logo.svg" alt="C++ Logo" class="skill-logo">
+                        <h3>C++</h3>
+                    </div>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <img src="images/csharp-logo.svg" alt="C# Logo" class="skill-logo">
+                        <h3>C#</h3>
+                    </div>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="skill-icon">C</i>
+                    <h3>C</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-unity"></i>
+                    <h3>Unity</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>SDL</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-row">
+                <div class="skill-card">
+                    <i class="fab fa-java"></i>
+                    <h3>Java</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-android"></i>
+                    <h3>Kotlin</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 65%"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-apple"></i>
+                    <h3>Swift</h3>
+                    <div class="skill-level-indicator">
+                        <div class="level-bar" style="width: 45%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact" style="--section-index: 4;" aria-labelledby="contact-title">
-    <h2 id="contact-title" onclick="toggleSection('contact')" onmouseover="playKey" data-lang-key="contact_title" role="button" aria-expanded="false" aria-controls="contact-content" tabindex="0">CONTACTO</h2>
-    <div class="contacto" id="contact-content">
-      <div class="contacto-item" data-popup-id="email" onclick="openPopup('email')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3 data-lang-key="email_title">>> EMAIL</h3>
-        <p>
-          <span class="contact-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33"><path d="M2 2h12v2l-6 4-6-4V2zm0 2v10h12V4l-6 4-6-4z"/></svg>
-          </span>
-          <a href="mailto:dorjeedev@proton.me" data-lang-key="email_content">dorjeedev@proton.me</a>
-        </p>
-      </div>
-      <div class="contacto-item" data-popup-id="github" onclick="openPopup('github')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3 data-lang-key="github_title">>> GITHUB</h3>
-        <p>
-          <span class="contact-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          </span>
-          <a href="https://github.com/Dorjeekhb" target="_blank" data-lang-key="github_content">github.com/Dorjeekhb</a>
-        </p>
-      </div>
-      <div class="contacto-item" data-popup-id="linkedin" onclick="openPopup('linkedin')" onmouseover="playGlitch()" role="button" tabindex="0">
-        <h3 data-lang-key="linkedin_title">>> LINKEDIN</h3>
-        <p>
-          <span class="contact-icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="#33ff33"><path d="M0 1.5C0 .67.67 0 1.5 0h13c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5h-13A1.5 1.5 0 010 14.5v-13zM3 4a1 1 0 100-2 1 1 0 000 2zm0 1.5v7h2v-7H3zm4 0v7h2v-3.5c0-1 .5-2 1.5-2s1.5 1 1.5 2V12h2v-3.5c0-2.5-1.5-3.5-3.5-3.5H7z"/></svg>
-          </span>
-          <a href="https://www.linkedin.com/in/dorje-khampa-herrezuelo-blasco/" target="_blank" data-lang-key="linkedin_content">linkedin.com/in/dorje-khampa-herrezuelo-blasco</a>
-        </p>
-      </div>
-    </div>
-  </section>
+    <section id="projects" class="section">
+        <h2 class="cyber-title">Proyectos</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>ManageYourLife (Android)</h3>
+                    <div class="project-actions">
+                        <button class="toggle-project" onclick="toggleProject('manageyourlife')">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <a href="https://github.com/Dorjeekhb/manageyourlife" target="_blank" class="github-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content" id="manageyourlife-content">
+                    <p>App básica de gestión de tareas con etiquetas, prioridades y búsqueda por fecha.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android Studio</span>
+                    </div>
+                    <div class="project-gallery" id="manageyourlife-gallery">
+                        <img src="images/2.png" alt="ManageYourLife screenshot 1">
+                        <img src="images/3.png" alt="ManageYourLife screenshot 2">
+                        <img src="images/1.png" alt="ManageYourLife screenshot 3">
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>WhatToWatch (watchOS)</h3>
+                    <div class="project-actions">
+                        <button class="toggle-project" onclick="toggleProject('whattowatch')">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <a href="https://github.com/Dorjeekhb/whattowatch" target="_blank" class="github-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content" id="whattowatch-content">
+                    <p>App para watchOS que recomienda series o películas diarias, con sinopsis, duración y plataforma de streaming.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Swift</span>
+                        <span class="tech-tag">watchOS</span>
+                    </div>
+                    <div class="project-gallery" id="whattowatch-gallery">
+                        <img src="images/4.png" alt="WhatToWatch screenshot 1">
+                        <img src="images/5.png" alt="WhatToWatch screenshot 2">
+                        <img src="images/6.png" alt="WhatToWatch screenshot 3">
+                        <img src="images/7.png" alt="WhatToWatch screenshot 4">
+                        <img src="images/12.png" alt="WhatToWatch screenshot 5">
+                        <img src="images/22.png" alt="WhatToWatch screenshot 6">
+                        <img src="images/32.png" alt="WhatToWatch screenshot 7">
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Bubble Adventure (Android)</h3>
+                    <div class="project-actions">
+                        <button class="toggle-project" onclick="toggleProject('bubbleadventure')">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <a href="https://github.com/Dorjeekhb/BubbleAdventure" target="_blank" class="github-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content" id="bubbleadventure-content">
+                    <p>Juego tipo Puzzle Bobble desarrollado en Android Studio. Dispara burbujas, combina colores y completa niveles con efectos animados.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android Studio</span>
+                    </div>
+                    <div class="project-gallery" id="bubbleadventure-gallery">
+                        <img src="images/pb1.png" alt="Bubble Adventure screenshot 1">
+                        <img src="images/pb2.png" alt="Bubble Adventure screenshot 2">
+                        <img src="images/pb3.png" alt="Bubble Adventure screenshot 3">
+                        <img src="images/pb4.png" alt="Bubble Adventure screenshot 4">
+                        <img src="images/pb5.png" alt="Bubble Adventure screenshot 5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer onclick="playClick()" onmouseover="playNavHover()" data-lang-key="footer">© 2025 Dorjee // root@pipboy</footer>
 
-  <!-- Terminal -->
-  <div class="terminal" id="terminal" role="region" aria-label="Terminal" aria-live="polite">
-    <div class="terminal-output" id="terminalOutput"></div>
-    <div class="terminal-input-container">
-      <span class="terminal-prompt">>> </span>
-      <input type="text" class="terminal-input" id="terminalInput" placeholder="" data-lang-key="terminal_placeholder" aria-label="Enter command" autocomplete="off" />
-    </div>
-    <button class="sound-toggle" id="soundToggle" onclick="handleToggleSound()">SONIDO: ON</button>
-    <button class="lang-toggle" id="langToggle" onclick="handleToggleLanguage()">IDIOMA: ES</button>
-    <button class="theme-toggle" id="themeToggle" onclick="handleToggleTheme()">TEMA: VERDE</button>
-    <a class="resume-button" id="resumeButton" data-lang-key="resume_button" download>DESCARGAR CV</a>
-  </div>
 
-  <!-- Mobile Bottom Bar -->
-  <div class="mobile-bottom-bar" id="mobileBottomBar">
-    <button class="lang-toggle-mobile" id="langToggleMobile" onclick="handleToggleLanguage()"></button>
-    <a class="resume-button-mobile" id="resumeButtonMobile" data-lang-key="resume_button" download></a>
-  </div>
+    <section id="contact" class="section">
+        <h2 class="cyber-title">Contacto</h2>
+        <div class="terminal contact-terminal">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
+            <div class="terminal-content">
+                <p class="type-text">> Iniciando protocolos de comunicación...</p>
+                <div class="contact-container">
+                    <a href="https://github.com/Dorjeekhb" target="_blank" class="social-link" onmouseover="playKey()">
+                        <i class="fab fa-github"></i>
+                        <span class="social-tooltip">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dorjee-khyber/" target="_blank" class="social-link" onmouseover="playKey()">
+                        <i class="fab fa-linkedin"></i>
+                        <span class="social-tooltip">LinkedIn</span>
+                    </a>
+                    <a href="https://twitter.com/DorjeeKhyber" target="_blank" class="social-link" onmouseover="playKey()">
+                        <i class="fab fa-x-twitter"></i>
+                        <span class="social-tooltip">X (Twitter)</span>
+                    </a>
+                </div>
+                <p class="type-text contact-email">> root@dorjee:~$</p>
+                <div class="cv-download">
+                    <p class="type-text">> Descargar CV / Download CV:</p>
+                    <div class="cv-buttons">
+                        <a href="cves.pdf" class="cv-button" download onmouseover="playKey()">
+                            <i class="fas fa-file-download"></i>
+                            CV en Español
+                        </a>
+                        <a href="cveng.pdf" class="cv-button" download onmouseover="playKey()">
+                            <i class="fas fa-file-download"></i>
+                            CV in English
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="script.js"></script>
+    <!-- Audio Elements -->
+    <audio id="bg-music" data-src="https://cdn.pixabay.com/audio/2023/10/29/14-16-19-672_200x200.mp3" preload="none" loop></audio>
+    <audio id="click-sound" data-src="https://cdn.pixabay.com/audio/2022/05/13/16-35-43-54_200x200.mp3" preload="none"></audio>
+    <audio id="key-sound" data-src="https://cdn.pixabay.com/audio/2022/08/02/00-15-02-598_200x200.mp3" preload="none"></audio>
+    <audio id="glitch-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-50-43-204_200x200.mp3" preload="none"></audio>
+    <audio id="nav-hover-sound" data-src="https://cdn.pixabay.com/audio/2022/03/10/15-43-24-182_200x200.mp3" preload="none"></audio>
+
+    <script src="effect.js"></script>
 </body>
 </html>
